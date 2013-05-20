@@ -49,6 +49,16 @@ POWERLINE_FULL_CURRENT_PATH="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
 POWERLINE_DETECT_SSH="true"
 
+
+# Originally from Jonathan Penn, with modifications by Gary Bernhardt
+function whodoneit() {
+    (set -e &&
+        for x in $(git grep -I --name-only $1); do
+            git blame -f -- $x | grep $1;
+        done
+    )
+}
+
 # Customize to your needs...
 #[[ -s /etc/profile.d/autojump.sh ]] && . /etc/profile.d/autojump.sh
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
@@ -65,3 +75,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ### vert.x
 export VERTX_HOME=/home/yeongsheng/vert.x-1.3.1.final
 export PATH="$VERTX_HOME/bin:$PATH"
+
+bindkey -v
+bindkey '\e[3~' delete-char
+bindkey '^R' history-incremental-search-backward
