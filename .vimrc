@@ -53,6 +53,13 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'cloud8421/vimux-cucumber'
 
+" Coding help vim scripts
+Bundle 'vim-scripts/Rainbow-Parenthesis'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-scripts/repeat.vim'
+Bundle 'vim-scripts/surround.vim'
+Bundle 'thisivan/vim-ruby-matchit'
+
 " Bundles for c/c++
 Bundle 'vim-scripts/Command-T'
 Bundle 'vim-scripts/c.vim'
