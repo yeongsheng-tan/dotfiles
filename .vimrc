@@ -48,17 +48,12 @@ let g:Powerline_symbols = 'fancy'
 Bundle 'zaiste/tmux.vim'
 Bundle 'benmills/vimux'
 
-" Bundles for ruby rails cucumber rspec
-Bundle 'skalnik/vim-vroom'
-Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'cloud8421/vimux-cucumber'
 
 " Coding help vim scripts
 Bundle 'vim-scripts/Rainbow-Parenthesis'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/repeat.vim'
 Bundle 'vim-scripts/surround.vim'
-Bundle 'thisivan/vim-ruby-matchit'
 
 " Bundles for c/c++
 Bundle 'vim-scripts/Command-T'
@@ -178,6 +173,19 @@ if count(g:vimified_packages, 'ruby')
     Bundle 'nelstrom/vim-textobj-rubyblock'
     Bundle 'ecomba/vim-ruby-refactoring'
 
+    Bundle 'tpope/vim-vividchalk'
+    Bundle 'skalnik/vim-vroom'
+    Bundle 'pgr0ss/vimux-ruby-test'
+    Bundle 'cloud8421/vimux-cucumber'
+    Bundle 'tpope/vim-bundler'
+    Bundle 'tpope/vim-cucumber'
+    Bundle 'thisivan/vim-ruby-matchit'
+    Bundle 'mileszs/apidock.vim'
+    Bundle 'tpope/vim-haml'
+    Bundle 'plasticboy/vim-markdown'
+    Bundle 'kchmck/vim-markdown'
+    Bundle 'vim-scripts/Puppet-Syntax-Highlighting'
+    Bundle 'vim-scripts/JSON.vim'
     autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
     autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
     autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
