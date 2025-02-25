@@ -1,0 +1,41 @@
+
+[window]
+
+opacity = 0.97
+
+padding.x = 10
+padding.y = 10
+
+decorations = "Full"
+decorations_theme_variant = "Light" # "Dark"
+
+[font]
+
+normal.family = "JetBrainsMono Nerd Font"
+bold.family = "JetBrainsMono Nerd Font"
+italic.family = "JetBrainsMono Nerd Font"
+bold_italic.family = "JetBrainsMono Nerd Font"
+size = 14.0
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[mouse]
+bindings = [
+    { mouse = "Left", mods = "Command", action = "ExpandSelection" }
+]
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+"
+command = "open"
+post_processing = true
+mouse = { enabled = true }
+binding = { key = "U", mods = "Command" }
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/sonokai.toml"
+]
