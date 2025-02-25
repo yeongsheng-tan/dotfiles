@@ -9,13 +9,12 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "google",
-      "model": "gemini-1.5-flash"
+      "provider": "anthropic",
+      "model": "claude-2"
     },
     "version": "2"
   },
   "features": {
-    "edit_prediction_provider": "zed",
     "edit_prediction_provider": "zed"
   },
   "auto_update_extensions": {
@@ -26,21 +25,25 @@
   },
   "base_keymap": "JetBrains",
   "theme": "Tokyo Night Storm",
-  "buffer_font_family": "Zed Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 15,
+  "buffer_font_features": {
+    "ligatures": true
+  },
   "tab_size": 2,
   "autosave": {
     "after_delay": {
       "milliseconds": 100
     }
   },
-  "buffer_font_features": {
-    "liga": true
-  },
   "terminal": {
     "copy_on_select": true,
-    "font_family": "JetBrains Mono"
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 14,
+    "font_features": {
+      "ligatures": true
+    }
   },
   "vim_mode": true,
-  "projects_online_by_default": true,
+  "projects_online_by_default": true
 }
