@@ -6,6 +6,7 @@
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(display-line-numbers-type 'relative)
+ '(package-selected-packages '(impatient-mode))
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces

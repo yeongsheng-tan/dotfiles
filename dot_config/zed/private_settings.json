@@ -1,0 +1,46 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "assistant": {
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-1.5-flash"
+    },
+    "version": "2"
+  },
+  "features": {
+    "edit_prediction_provider": "zed",
+    "edit_prediction_provider": "zed"
+  },
+  "auto_update_extensions": {
+    "biome": true
+  },
+  "telemetry": {
+    "metrics": false
+  },
+  "base_keymap": "JetBrains",
+  "theme": "Tokyo Night Storm",
+  "buffer_font_family": "Zed Mono",
+  "buffer_font_size": 15,
+  "tab_size": 2,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 100
+    }
+  },
+  "buffer_font_features": {
+    "liga": true
+  },
+  "terminal": {
+    "copy_on_select": true,
+    "font_family": "JetBrains Mono"
+  },
+  "vim_mode": true,
+  "projects_online_by_default": true,
+}

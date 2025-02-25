@@ -19,6 +19,7 @@ zmodule termtitle
 # Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
 
+
 #
 # Prompt
 #
@@ -37,6 +38,8 @@ zmodule prompt-pwd
 
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
+# Sets up the direnv Zsh shell integration
+zmodule direnv --use degit
 # Enables and configures smart and extensive tab completion.
 # completion must be sourced after all modules that add completion definitions.
 zmodule completion
@@ -45,7 +48,7 @@ zmodule homebrew --use degit
 # magic-enter
 zmodule magic-enter --use degit
 # asdf
-zmodule asdf --use degit
+# zmodule asdf --use degit
 # exa
 zmodule exa --use degit
 # fasd
@@ -54,8 +57,12 @@ zmodule fasd --use degit
 zmodule fzf --use degit
 # kubernetes
 zmodule k --use degit
+# Manages all python venvs in one place.
+zmodule pvenv --use degit
 # ruby
 zmodule ruby --use degit
+# ssh
+zmodule ssh --use degit
 
 #
 # Modules that must be initialized last
@@ -82,6 +89,10 @@ zmodule joke/zim-istioctl --use degit
 zmodule joke/zim-k9s --use degit
 # zim-kubectl
 zmodule joke/zim-kubectl --use degit
+# zim-minikube
+zmodule joke/zim-minikube --use degit
+# mise
+zmodule joke/zim-mise --use degit
 # zim-skaffold
 zmodule joke/zim-skaffold --use degit
 # zim-steampipe

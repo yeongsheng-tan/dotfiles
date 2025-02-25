@@ -144,10 +144,13 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
+# autojump
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
 # TMUX aliases
-alias ta='tmux attach -t'
-alias tad='tmux attach -d -t'
-alias ts='tmux new-session -s'
+alias ta='tmux attach -u -t'
+alias tad='tmux attach -u -d -t'
+alias ts='tmux new-session -u -s'
 alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
@@ -162,10 +165,10 @@ alias lh='lsd -alh'
 alias lrh='lsd -alrh'
 alias lrth='lsd -alrth'
 
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+#[[ $HOME/.local/share/mise/installs/kubectl/latest/bin/kubectl ]] && source <(kubectl completion zsh)
 export TERM=xterm-256color
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # SOPS & AGE
 export SOPS_AGE_KEY_FILE=$HOME/.sops/key.txt
@@ -182,7 +185,7 @@ if [ -f '/Users/yeongshengtan/google-cloud-sdk/completion.zsh.inc' ]; then . '/U
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fzf via Homebrew
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source <(fzf --zsh)
 
 _has() {
   type "$1" &> /dev/null
@@ -209,25 +212,79 @@ if _has fzf && _has ag; then
   '
 fi
 
-# asdf
-#$(brew --prefix asdf)/libexec/asdf.sh
-
 # doom-emacs
-export PATH=$PATH:/Users/yeongshengtan/.emacs.d/bin
+export PATH=$PATH:/Users/yeongshengtan/.config/emacs/bin
 
 # flutter dev
 export FLUTTER="fvm flutter"
 export PATH="$HOME/fvm/default/bin:$PATH"
-# export JAVA_HOME="/Users/yeongshengtan/Library/Java/JavaVirtualMachines/azul-11.0.18/Contents/Home"
 
 # Gigalixir
-export PATH=$PATH:$(python3.11 -m site --user-base)/bin
+export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
+export PATH=$PATH:$(python3 -m site --user-base)/bin
 
-# rtx
-eval "$(/opt/homebrew/bin/rtx activate zsh)"
+# mise (formerly rtx)
+eval "$(mise activate zsh)"
 
 # ANDROID
 export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+#export JAVA_HOME="$HOME/Library/Application Support/JetBrains/Toolbox/apps/AndroidStudio/ch-0/223.8836.35.2231.10406996/Android Studio.app/Contents/jbr/Contents/Home"
+#export PATH=$PATH:$JAVA_HOME/bin
 
-# nix
-#. $HOME/.nix-profile/etc/profile.d/nix.sh
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
+# bat
+export BAT_THEME="TwoDark"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/yeongshengtan/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Activate atuin
+eval "$(atuin init zsh)"
+
+# Activate direnv
+eval "$(direnv hook zsh)"
+
+# porter
+export PATH=$PATH:~/.porter
+
+# podman
+#alias docker=podman
+#export DOCKER_HOST='unix:///Users/yeongshengtan/.local/share/containers/podman/machine/qemu/podman.sock'
+
+# pnpm
+#export PNPM_HOME="/Users/yeongshengtan/Library/pnpm"
+#case ":$PATH:" in
+#  *":$PNPM_HOME:"*) ;;
+#  *) export PATH="$PNPM_HOME:$PATH" ;;
+#esac
+# pnpm end
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+
+# Secretive
+export SSH_AUTH_SOCK=/Users/yeongshengtan/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# CodeWhisperer pre block. Keep at the top of this file.
+#[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
+
+# CodeWhisperer post block. Keep at the bottom of this file.
+#[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/yeongshengtan/.dart-cli-completion/zsh-config.zsh ]] && . /Users/yeongshengtan/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+# Added by Windsurf
+export PATH="/Users/yeongshengtan/.codeium/windsurf/bin:$PATH"

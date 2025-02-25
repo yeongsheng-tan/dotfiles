@@ -1,23 +1,67 @@
 [core]
     pager = delta
+    autocrlf = input
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --features=interactive
 
 [delta]
     side-by-side = true
     line-numbers = true
     navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
+    # Better handling of wide/long lines
+    max-line-length = 512
+    wrap-max-lines = 6
+    wrap-right-prefix = "↳ "
+    wrap-left-prefix = "↳ "
+
+    # Better visual separation
+    file-style = "bold cyan ul"
+    file-decoration-style = "cyan ol ul"
+    hunk-header-style = "omit"  # cleaner look by omitting hunk headers
+
+    # Diff colors and styling
+    minus-style = "syntax #450a15"    # Dark red background
+    minus-emph-style = "syntax #600818" # Emphasized deleted lines
+    plus-style = "syntax #0b4820"     # Dark green background
+    plus-emph-style = "syntax #175c2e" # Emphasized added lines
+
+    # Improved line number styling
+    line-numbers-left-style = "#636363"
+    line-numbers-right-style = "#636363"
+    line-numbers-minus-style = "red bold"
+    line-numbers-plus-style = "green bold"
+
+    # Better syntax highlighting
+    syntax-theme = "Monokai Extended"
+    true-color = always
+    hyperlinks = true
+
+    # Improved whitespace errors highlighting
+    whitespace-error-style = "reverse #ff5370"
+
+    # Keep Git's color indicators
+    keep-plus-minus-markers = true
+
+    # Zero-width characters for better alignment
+    zero-style = "syntax"
 [merge]
     conflictstyle = diff3
 
 [diff]
     colorMoved = default
+
+[includeIf "hasconfig:remote.*.url:git@github.com:**"]
+    path = ~/.gitconfig-github
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:**"]
+    path = ~/.gitconfig-gitlab
+
 [user]
-	email = tanyeongsheng@gmail.com
-	name = Tan Yeong Sheng
-	signingkey = 0721E1D88C6FE026
-[commit]
-	gpgsign = true
+    email = tanyeongsheng@gmail.com
+    name = Tan Yeong Sheng
+    signingkey = 0721E1D88C6FE026
+
+[init]
+    defaultBranch = main
