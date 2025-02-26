@@ -46,6 +46,7 @@
 
     # Zero-width characters for better alignment
     zero-style = "syntax"
+
 [merge]
     conflictstyle = diff3
 
@@ -62,6 +63,9 @@
     email = tanyeongsheng@gmail.com
     name = Tan Yeong Sheng
     signingkey = 0721E1D88C6FE026
+
+[commit]
+    gpgsign = true
 
 [init]
     defaultBranch = main
