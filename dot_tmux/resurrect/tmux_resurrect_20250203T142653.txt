@@ -1,0 +1,238 @@
+pane	0	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	1	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	10	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	102	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	103	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	104	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	105	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	106	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/customer-package-processor2	:/Users/yeongshengtan/code_repos/jago_code/customer-package-processor2	1	zsh	:
+pane	107	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	108	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	109	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/hobby	:/Users/yeongshengtan/code_repos/hobby	1	zsh	:
+pane	110	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	111	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	112	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	113	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	114	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:/bin/zsh
+pane	115	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	116	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	117	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	118	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	119	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	12	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	120	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	121	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	122	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	123	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	124	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	125	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	126	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	127	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	128	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro:~/code_repos/jago_code/digital_banking_app/app_jago_mobile/e2e_mobile	:/Users/yeongshengtan/code_repos/jago_code/digital_banking_app/app_jago_mobile/e2e_mobile	1	zsh	:/bin/zsh
+pane	129	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro:~/code_repos/jago_code/digital_banking_app/app_jago_mobile/e2e_mobile	:/Users/yeongshengtan/code_repos/jago_code/digital_banking_app/app_jago_mobile/e2e_mobile	1	zsh	:/bin/zsh
+pane	13	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	130	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro:~/code_repos/jago_code/digital_banking_app/app_jago_mobile/e2e_mobile	:/Users/yeongshengtan/code_repos/jago_code/digital_banking_app/app_jago_mobile/e2e_mobile	1	zsh	:/bin/zsh
+pane	131	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	14	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	15	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	17	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	18	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/customer-package-processor2	:/Users/yeongshengtan/code_repos/jago_code/customer-package-processor2	1	zsh	:
+pane	19	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	20	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	21	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	22	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	24	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	25	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	26	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	27	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	28	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	29	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	3	1	0	:	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/incident-ticketing	:/Users/yeongshengtan/code_repos/jago_code/incident-ticketing	0	zsh	:
+pane	3	1	0	:	1	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/atlassian	:/Users/yeongshengtan/code_repos/jago_code/atlassian	1	zsh	:
+pane	3	2	0	:-	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code	:/Users/yeongshengtan/code_repos/jago_code	1	zsh	:
+pane	3	3	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	30	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	31	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	32	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	33	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	34	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~	:/Users/yeongshengtan	1	zsh	:
+pane	36	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	37	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-business-event	:/Users/yeongshengtan/code_repos/jago_code/ms-business-event	1	zsh	:
+pane	38	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	39	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	40	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	41	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~	:/Users/yeongshengtan	1	zsh	:
+pane	42	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	43	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	44	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	46	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	47	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	48	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	49	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	5	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos	:/Users/yeongshengtan/code_repos	1	zsh	:
+pane	50	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	51	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	52	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	53	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	54	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	55	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	56	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	57	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	58	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	59	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	6	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	61	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/digital_banking_app	:/Users/yeongshengtan/code_repos/jago_code/digital_banking_app	1	zsh	:
+pane	64	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	65	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	66	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	67	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	68	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	69	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	70	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	71	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	72	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	74	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	75	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	76	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	77	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	78	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	79	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	8	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	80	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	81	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	82	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	83	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	84	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	85	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	86	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	87	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	88	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	89	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	90	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	91	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	92	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	93	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	94	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut/frontend	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut/frontend	1	zsh	:
+pane	95	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	96	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	97	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+pane	98	1	1	:##*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/odd-e_code/doughnut	:/Users/yeongshengtan/code_repos/odd-e_code/doughnut	1	zsh	:
+window	0	1	:zsh	1	:*	ac9e,200x50,0,0,1	:
+window	1	1	:zsh	1	:*	ac9f,200x50,0,0,2	:
+window	10	1	:zsh	1	:*	aca0,200x50,0,0,3	:
+window	102	1	:zsh	1	:*	aca1,200x50,0,0,4	:
+window	103	1	:zsh	1	:*	aca2,200x50,0,0,5	:
+window	104	1	:zsh	1	:*	aca3,200x50,0,0,6	:
+window	105	1	:zsh	1	:*	aca4,200x50,0,0,7	:
+window	106	1	:zsh	1	:*	aca5,200x50,0,0,8	:
+window	107	1	:zsh	1	:*	aca6,200x50,0,0,9	:
+window	108	1	:zsh	1	:*	567f,200x50,0,0,10	:
+window	109	1	:zsh	1	:*	5680,200x50,0,0,11	:
+window	110	1	:zsh	1	:*	5681,200x50,0,0,12	:
+window	111	1	:zsh	1	:*	5682,200x50,0,0,13	:
+window	112	1	:zsh	1	:*	5683,200x50,0,0,14	:
+window	113	1	:zsh	1	:*	5684,200x50,0,0,15	:
+window	114	1	:zsh	1	:*	5685,200x50,0,0,16	:
+window	115	1	:zsh	1	:*	5686,200x50,0,0,17	:
+window	116	1	:zsh	1	:*	5687,200x50,0,0,18	:
+window	117	1	:zsh	1	:*	5688,200x50,0,0,19	:
+window	118	1	:zsh	1	:*	d67f,200x50,0,0,20	:
+window	119	1	:zsh	1	:*	d680,200x50,0,0,21	:
+window	12	1	:zsh	1	:*	d681,200x50,0,0,22	:
+window	120	1	:zsh	1	:*	d682,200x50,0,0,23	:
+window	121	1	:zsh	1	:*	d683,200x50,0,0,24	:
+window	122	1	:zsh	1	:*	d684,200x50,0,0,25	:
+window	123	1	:zsh	1	:*	d685,200x50,0,0,26	:
+window	124	1	:zsh	1	:##*	d686,200x50,0,0,27	:
+window	125	1	:zsh	1	:*	d687,200x50,0,0,28	:
+window	126	1	:zsh	1	:*	d688,200x50,0,0,29	:
+window	127	1	:zsh	1	:*	5680,200x50,0,0,30	:
+window	128	1	:zsh	1	:##*	5681,200x50,0,0,31	:
+window	129	1	:zsh	1	:##*	5682,200x50,0,0,32	:
+window	13	1	:zsh	1	:*	5683,200x50,0,0,33	:
+window	130	1	:zsh	1	:##*	5684,200x50,0,0,34	:
+window	131	1	:podman-remote	1	:*	5685,200x50,0,0,35	:
+window	14	1	:zsh	1	:*	5686,200x50,0,0,36	:
+window	15	1	:zsh	1	:*	5687,200x50,0,0,37	:
+window	17	1	:zsh	1	:*	5688,200x50,0,0,38	:
+window	18	1	:zsh	1	:*	5689,200x50,0,0,39	:
+window	19	1	:zsh	1	:*	d680,200x50,0,0,40	:
+window	20	1	:zsh	1	:*	d681,200x50,0,0,41	:
+window	21	1	:zsh	1	:*	d682,200x50,0,0,42	:
+window	22	1	:zsh	1	:*	d683,200x50,0,0,43	:
+window	24	1	:zsh	1	:*	d684,200x50,0,0,44	:
+window	25	1	:zsh	1	:*	d685,200x50,0,0,45	:
+window	26	1	:zsh	1	:*	d686,200x50,0,0,46	:
+window	27	1	:zsh	1	:*	d687,200x50,0,0,47	:
+window	28	1	:zsh	1	:*	d688,200x50,0,0,48	:
+window	29	1	:zsh	1	:*	d689,200x50,0,0,49	:
+window	3	1	:zsh	0	:	4896,200x50,0,0{100x50,0,0,50,99x50,101,0,51}	:
+window	3	2	:zsh	0	:-	5683,200x50,0,0,52	:
+window	3	3	:zsh	1	:*	5684,200x50,0,0,53	:
+window	30	1	:zsh	1	:*	5685,200x50,0,0,54	:
+window	31	1	:zsh	1	:*	5686,200x50,0,0,55	:
+window	32	1	:zsh	1	:*	5687,200x50,0,0,56	:
+window	33	1	:zsh	1	:*	5688,200x50,0,0,57	:
+window	34	1	:zsh	1	:*	5689,200x50,0,0,58	:
+window	36	1	:zsh	1	:*	568a,200x50,0,0,59	:
+window	37	1	:zsh	1	:*	d681,200x50,0,0,60	:
+window	38	1	:zsh	1	:*	d682,200x50,0,0,61	:
+window	39	1	:zsh	1	:*	d683,200x50,0,0,62	:
+window	40	1	:zsh	1	:*	d684,200x50,0,0,63	:
+window	41	1	:zsh	1	:*	d685,200x50,0,0,64	:
+window	42	1	:zsh	1	:*	d686,200x50,0,0,65	:
+window	43	1	:zsh	1	:*	d687,200x50,0,0,66	:
+window	44	1	:zsh	1	:*	d688,200x50,0,0,67	:
+window	46	1	:zsh	1	:*	d689,200x50,0,0,68	:
+window	47	1	:zsh	1	:*	d68a,200x50,0,0,69	:
+window	48	1	:zsh	1	:*	5682,200x50,0,0,70	:
+window	49	1	:zsh	1	:*	5683,200x50,0,0,71	:
+window	5	1	:zsh	1	:*	5684,200x50,0,0,72	:
+window	50	1	:zsh	1	:*	5685,200x50,0,0,73	:
+window	51	1	:zsh	1	:##*	5686,200x50,0,0,74	:
+window	52	1	:zsh	1	:*	5687,200x50,0,0,75	:
+window	53	1	:zsh	1	:##*	5688,200x50,0,0,76	:
+window	54	1	:zsh	1	:##*	5689,200x50,0,0,77	:
+window	55	1	:zsh	1	:*	568a,200x50,0,0,78	:
+window	56	1	:zsh	1	:##*	568b,200x50,0,0,79	:
+window	57	1	:zsh	1	:##*	d682,200x50,0,0,80	:
+window	58	1	:zsh	1	:##*	d683,200x50,0,0,81	:
+window	59	1	:zsh	1	:##*	d684,200x50,0,0,82	:
+window	6	1	:zsh	1	:##*	d685,200x50,0,0,83	:
+window	61	1	:zsh	1	:*	d686,200x50,0,0,84	:
+window	64	1	:zsh	1	:##*	d687,200x50,0,0,85	:
+window	65	1	:zsh	1	:##*	d688,200x50,0,0,86	:
+window	66	1	:zsh	1	:##*	d689,200x50,0,0,87	:
+window	67	1	:zsh	1	:##*	d68a,200x50,0,0,88	:
+window	68	1	:zsh	1	:##*	d68b,200x50,0,0,89	:
+window	69	1	:zsh	1	:##*	5683,200x50,0,0,90	:
+window	70	1	:zsh	1	:##*	5684,200x50,0,0,91	:
+window	71	1	:zsh	1	:##*	5685,200x50,0,0,92	:
+window	72	1	:zsh	1	:##*	5686,200x50,0,0,93	:
+window	74	1	:zsh	1	:##*	5687,200x50,0,0,94	:
+window	75	1	:zsh	1	:##*	5688,200x50,0,0,95	:
+window	76	1	:zsh	1	:##*	5689,200x50,0,0,96	:
+window	77	1	:zsh	1	:##*	568a,200x50,0,0,97	:
+window	78	1	:zsh	1	:##*	568b,200x50,0,0,98	:
+window	79	1	:zsh	1	:##*	568c,200x50,0,0,99	:
+window	8	1	:zsh	1	:##*	ab6f,200x50,0,0,100	:
+window	80	1	:zsh	1	:##*	ab70,200x50,0,0,101	:
+window	81	1	:zsh	1	:##*	ab71,200x50,0,0,102	:
+window	82	1	:zsh	1	:##*	ab72,200x50,0,0,103	:
+window	83	1	:zsh	1	:##*	ab73,200x50,0,0,104	:
+window	84	1	:zsh	1	:##*	ab74,200x50,0,0,105	:
+window	85	1	:zsh	1	:##*	ab75,200x50,0,0,106	:
+window	86	1	:zsh	1	:##*	ab76,200x50,0,0,107	:
+window	87	1	:zsh	1	:##*	ab77,200x50,0,0,108	:
+window	88	1	:zsh	1	:##*	ab78,200x50,0,0,109	:
+window	89	1	:zsh	1	:##*	2b70,200x50,0,0,110	:
+window	90	1	:zsh	1	:##*	2b71,200x50,0,0,111	:
+window	91	1	:zsh	1	:##*	2b72,200x50,0,0,112	:
+window	92	1	:zsh	1	:##*	2b73,200x50,0,0,113	:
+window	93	1	:zsh	1	:##*	2b74,200x50,0,0,114	:
+window	94	1	:zsh	1	:##*	2b75,200x50,0,0,115	:
+window	95	1	:zsh	1	:##*	2b76,200x50,0,0,116	:
+window	96	1	:zsh	1	:##*	2b77,200x50,0,0,117	:
+window	97	1	:zsh	1	:##*	2b78,200x50,0,0,118	:
+window	98	1	:zsh	1	:##*	2b79,200x50,0,0,119	:
+state	131	97
