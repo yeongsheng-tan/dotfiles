@@ -1,1 +1,95 @@
+" Enable syntax highlighting
+syntax on
+
+" Enable file type detection and language-dependent indentation
+filetype plugin indent on
+
+" Set line numbers
+set number
+
+" Highlight the current line
+set cursorline
+
+" Enable mouse support
+set mouse=a
+
+" Set tab width to 4 spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Enable auto-indentation
+set autoindent
+
+" Show matching brackets
+set showmatch
+
+" Highlight search results
+set hlsearch
+
+" Incremental search (search as you type)
+set incsearch
+
+" Ignore case when searching
+set ignorecase
+
+" Smart case sensitivity when searching
+set smartcase
+
+" Enable backspace over autoindent, line breaks, and start of insert
+set backspace=indent,eol,start
+
+" Set a color scheme (you can choose from available ones or install new ones)
+colorscheme desert
+
+" Enable persistent undo
+set undofile
+set undodir=~/.vim/undodir
+
+" Create the undodir if it doesn't exist
+if !isdirectory(&undodir)
+    call mkdir(&undodir, "p", 0700)
+endif
+
+" Enable spell checking for Git commit messages
+autocmd FileType gitcommit setlocal spell
+
+" Automatically wrap text at 72 characters for Git commit messages
+autocmd FileType gitcommit setlocal textwidth=72
+
+" Enable status line
+set laststatus=2
+
+" Show the mode you're in (e.g., INSERT, VISUAL)
+set showmode
+
+" Enable clipboard integration (requires Vim with +clipboard feature)
+set clipboard=unnamedplus
+
+" Install and configure plugins using a plugin manager like vim-plug
+" Add this section if you want to use plugins
+call plug#begin('~/.vim/plugged')
+
+" Add plugins here
+Plug 'tpope/vim-fugitive' " Git integration
+Plug 'airblade/vim-gitgutter' " Git diff in the gutter
+Plug 'preservim/nerdtree' " File explorer
+Plug 'vim-airline/vim-airline' " Status line
+Plug 'vim-airline/vim-airline-themes' " Themes for airline
+Plug 'sheerun/vim-polyglot' " Better syntax highlighting for many languages
+
+call plug#end()
+
+" Configure vim-airline
+let g:airline_theme = 'minimalist'
+let g:airline#extensions#tabline#enabled = 1
+
+" Configure NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Configure vim-gitgutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_signs = 1
+
+" fzf
 set rtp+=/opt/homebrew/opt/fzf
