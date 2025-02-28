@@ -35,6 +35,24 @@ post_processing = true
 mouse = { enabled = true }
 binding = { key = "U", mods = "Command" }
 
+[[keyboard.bindings]]
+key = "Home"
+chars = "\x1bOH"
+
+[[keyboard.bindings]]
+key = "End"
+chars = "\x1bOF"
+
+[[keyboard.bindings]]
+key = "Left"
+mods = "Alt"
+chars = "\x1bb"
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Alt"
+chars = "\x1bf"
+
 [general]
 import = [
     "~/.config/alacritty/themes/themes/sonokai.toml"

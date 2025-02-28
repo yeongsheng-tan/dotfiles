@@ -1,7 +1,0 @@
-pane	0	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-entitlement	:/Users/yeongshengtan/code_repos/jago_code/ms-entitlement	1	zsh	:
-pane	1	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-entitlement	:/Users/yeongshengtan/code_repos/jago_code/ms-entitlement	1	zsh	:
-pane	2	1	1	:*	0	yeongshengtan@Yeongs-MacBook-Pro: ~/code_repos/jago_code/ms-entitlement	:/Users/yeongshengtan/code_repos/jago_code/ms-entitlement	1	zsh	:
-window	0	1	:zsh	1	:*	c65d,80x29,0,0,0	:
-window	1	1	:zsh	1	:*	c65e,80x29,0,0,1	:
-window	2	1	:zsh	1	:*	bdff,141x54,0,0,2	:
-state	2	
