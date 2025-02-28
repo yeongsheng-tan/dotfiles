@@ -39,7 +39,9 @@ colorscheme onedark
 " Visual Settings
 """""""""""""""""""""""""""""""""""""""""""""""""
 " For Goyo
-let g:goyo_width=85
+" Configure Goyo to not center content
+let g:goyo_width = '100%' " Use full width
+let g:goyo_height = '100%' " Use full height
 
 " For LimeLight
 " Color name (:help cterm-colors) or ANSI code
@@ -147,10 +149,12 @@ nnoremap <leader>g :Goyo<CR>:Limelight!!<CR>
 " Toggle relative line numbers
 nnoremap <leader>r :set relativenumber!<CR>
 " Turn limelight on by default
-" autocmd VimEnter * Limelight
+autocmd VimEnter * Limelight
+autocmd VimEnter * AirlineToggle
+" Turn Goyo on with key remap
+nnoremap <leader>g :Goyo<CR>:Limelight!!<CR>
 " Turn Goyo on by default
-autocmd VimEnter * Goyo
-" autocmd VimEnter * AirlineToggle
+" autocmd VimEnter * Goyo
 " In Goyo, if airline is turned on, do nto show scratch area
-" autocmd! User GoyoEnter nested set eventignore=FocusGained
-" autocmd! User GoyoLeave nested set eventignore=
+"autocmd! User GoyoEnter nested set eventignore=FocusGained
+"autocmd! User GoyoLeave nested set eventignore=
