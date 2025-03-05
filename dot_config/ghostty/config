@@ -1,16 +1,14 @@
 background-opacity = 0.9
 mouse-hide-while-typing = true
 
-[keybindings]
 # Bind fn + left-arrow (Home key) to beginning of line
-"Home" = "SendChars \\x1bOH"
+#bind '"\eOH": beginning-of-line'
 
 # Bind fn + right-arrow (End key) to end of line
-"End" = "SendChars \\x1bOF"
+#bind '"\eOF": end-of-line'
 
 # Bind Alt + Left to backward word
-"Alt+Left" = "SendChars \\x1bb"
+#bind '"\eb": backward-word'
 
 # Bind Alt + Right to forward word
-"Alt+Right" = "SendChars \\x1bf"
-
+#bind '"\ef": forward-word'
