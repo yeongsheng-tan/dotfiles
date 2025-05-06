@@ -151,9 +151,9 @@ unset fasd_cache
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # TMUX aliases
-alias ta='tmux attach -u -t'
-alias tad='tmux attach -u -d -t'
-alias ts='tmux new-session -u -s'
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
