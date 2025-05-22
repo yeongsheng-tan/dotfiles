@@ -289,5 +289,8 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 # Added by Windsurf
 export PATH="/Users/yeongshengtan/.codeium/windsurf/bin:$PATH"
 
+# GPG TTY
+export GPG_TTY=$(tty)
+
 # IntelliJ shell path
 # export PATH="$PATH:~/Applications/IntelliJ\ IDEA\ Community\ Edition\ 2024.3.5.app/Contents/MacOS"
