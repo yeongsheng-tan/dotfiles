@@ -254,8 +254,9 @@ eval "$(direnv hook zsh)"
 export PATH=$PATH:~/.porter
 
 # podman
-#alias docker=podman
+alias docker=podman
 #export DOCKER_HOST='unix:///Users/yeongshengtan/.local/share/containers/podman/machine/qemu/podman.sock'
+export DOCKER_HOST='unix:///var/folders/36/6pb1hvb11s34y1k27xkcdw1c0000gn/T/podman/podman-machine-default-api.sock'
 
 # docker completions
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
