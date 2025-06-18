@@ -295,3 +295,8 @@ export GPG_TTY=$(tty)
 
 # IntelliJ shell path
 # export PATH="$PATH:~/Applications/IntelliJ\ IDEA\ Community\ Edition\ 2024.3.5.app/Contents/MacOS"
+
+# ngrok
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
