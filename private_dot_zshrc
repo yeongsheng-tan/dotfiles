@@ -223,7 +223,7 @@ export PATH=$PATH:$(python3 -m site --user-base)/bin
 
 # mise (formerly rtx)
 eval "$(mise activate zsh)"
-[[ $HOME/.local/share/mise/installs/kubectl/latest/bin/kubectl ]] && source <(kubectl completion zsh)
+#[[ $HOME/.local/share/mise/installs/kubectl/latest/bin/kubectl ]] && source <(kubectl completion zsh)
 
 # ANDROID
 export ANDROID_HOME=$HOME/Library/Android/sdk

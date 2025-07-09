@@ -15,5 +15,7 @@ kubespy = "latest"
 helm = "latest"
 minikube = "latest"
 terraform = "latest"
+kubectl = "latest"
+pnpm = "latest"
 
 [env]
