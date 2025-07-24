@@ -221,9 +221,12 @@ export PATH="$HOME/fvm/default/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
 export PATH=$PATH:$(python3 -m site --user-base)/bin
 
-# mise (formerly rtx)
+# mise
 eval "$(mise activate zsh)"
 #[[ $HOME/.local/share/mise/installs/kubectl/latest/bin/kubectl ]] && source <(kubectl completion zsh)
+if command -v kubectl &>/dev/null; then
+  source <(kubectl completion zsh)
+fi
 
 # ANDROID
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -244,6 +247,12 @@ export BAT_THEME="TwoDark"
 export PATH="/Users/yeongshengtan/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
+# Ensure completion system is available
+if ! command -v compdef &>/dev/null; then
+  autoload -Uz compinit
+  compinit
+fi
+
 # Activate atuin
 eval "$(atuin init zsh)"
 
@@ -261,17 +270,7 @@ export PATH=$PATH:~/.porter
 # docker completions
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/yeongshengtan/.docker/completions $fpath)
-autoload -Uz compinit
-# compinit
 # End of Docker CLI completions
-
-# pnpm
-#export PNPM_HOME="/Users/yeongshengtan/Library/pnpm"
-#case ":$PATH:" in
-#  *":$PNPM_HOME:"*) ;;
-#  *) export PATH="$PNPM_HOME:$PATH" ;;
-#esac
-# pnpm end
 
 # tabtab source for packages
 # uninstall by removing these lines
