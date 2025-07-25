@@ -42,7 +42,7 @@ WORDCHARS=${WORDCHARS//[\/]}
 # -----------------
 
 # Use degit instead of git as the default tool to install and update modules.
-# zstyle ':zim:zmodule' use 'degit'
+zstyle ':zim:zmodule' use 'degit'
 
 # --------------------
 # Module configuration
@@ -139,16 +139,22 @@ unset key
 export EDITOR=nvim
 
 # fasd
-eval "$(fasd --init auto)"
-fasd_cache="$HOME/.fasd-init-zsh"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
+ #eval "$(fasd --init auto)"
+#fasd_cache="$HOME/.fasd-init-zsh"
+#if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+#  fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
+#  eval "$(fasd --init posix-alias zsh-hook)" >| "$fasd_cache"
+#fi
+#source "$fasd_cache"
+#unset fasd_cache
+# fasd - defer completion setup
+if command -v fasd &>/dev/null; then
+  eval "$(fasd --init posix-alias zsh-hook)"
+  # Note: fasd completions will be loaded later
 fi
-source "$fasd_cache"
-unset fasd_cache
 
 # autojump
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+#[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # TMUX aliases
 alias ta='tmux attach -t'
@@ -184,20 +190,20 @@ if [ -f '/Users/yeongshengtan/google-cloud-sdk/completion.zsh.inc' ]; then . '/U
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fzf via Homebrew
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source <(fzf --zsh)
-
-_has() {
-  type "$1" &> /dev/null
-}
-
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source <(fzf --zsh)
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Options to fzf command
 export FZF_COMPLETION_OPTS='+c -x'
 if [ -e ~/.fzf ]; then
   #_append_to_path ~/.fzf/bin
   export PATH=~/.fzf/bin:$PATH
   source ~/.fzf/shell/key-bindings.zsh
-  source ~/.fzf/shell/completion.zsh
+  #source ~/.fzf/shell/completion.zsh
 fi
+
+_has() {
+  type "$1" &> /dev/null
+}
 
 # fzf + ag configuration
 if _has fzf && _has ag; then
@@ -216,6 +222,13 @@ export PATH=$PATH:/Users/yeongshengtan/.config/emacs/bin
 # flutter dev
 export FLUTTER="fvm flutter"
 export PATH="$HOME/fvm/default/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/yeongshengtan/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # Gigalixir
 export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
@@ -249,14 +262,9 @@ fi
 export BAT_THEME="TwoDark"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/yeongshengtan/.rd/bin:$PATH"
+#export PATH="/Users/yeongshengtan/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-# Ensure completion system is available
-#if ! command -v compdef &>/dev/null; then
-#  autoload -Uz compinit
-#  compinit
-#fi
 
 # Activate atuin
 eval "$(atuin init zsh)"
@@ -282,9 +290,29 @@ export SSH_AUTH_SOCK=/Users/yeongshengtan/Library/Containers/com.maxgoedjen.Secr
 # Docker completions path (this needs to be set before compinit)
 fpath=(/Users/yeongshengtan/.docker/completions $fpath)
 
-# Wait for completion system to be ready, then add additional completions
-if command -v kubectl &>/dev/null; then
-  source <(kubectl completion zsh)
+# Ensure completion system is available
+#if ! command -v compdef &>/dev/null; then
+#  autoload -Uz compinit
+#  compinit -u
+#fi
+
+# Now load all the deferred completions
+if command -v fasd &>/dev/null; then
+  fasd_cache="$HOME/.fasd-init-zsh-comp"
+  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+    fasd --init zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
+  fi
+  [ -f "$fasd_cache" ] && source "$fasd_cache"
+  unset fasd_cache
+fi
+
+# fzf completions
+if [ -e ~/.fzf ] && [ -f ~/.fzf/shell/completion.zsh ]; then
+  source ~/.fzf/shell/completion.zsh
+fi
+
+if [ -f '/Users/yeongshengtan/google-cloud-sdk/completion.zsh.inc' ]; then 
+  source '/Users/yeongshengtan/google-cloud-sdk/completion.zsh.inc'
 fi
 
 if command -v ngrok &>/dev/null; then

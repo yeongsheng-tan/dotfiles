@@ -56,7 +56,7 @@ zmodule fasd --use degit
 # fzf
 zmodule fzf --use degit
 # kubernetes
-zmodule k --use degit
+#zmodule k --use degit
 # Manages all python venvs in one place.
 zmodule pvenv --use degit
 # ruby
@@ -88,9 +88,9 @@ zmodule joke/zim-istioctl --use degit
 # zim-k9s
 zmodule joke/zim-k9s --use degit
 # zim-kubectl
-zmodule joke/zim-kubectl --use degit
+#zmodule joke/zim-kubectl --use degit
 # zim-minikube
-zmodule joke/zim-minikube --use degit
+#zmodule joke/zim-minikube --use degit
 # mise
 zmodule joke/zim-mise --use degit
 # zim-skaffold

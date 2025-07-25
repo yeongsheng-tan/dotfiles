@@ -18,6 +18,5 @@ kubespy = "latest"
 helm = "latest"
 minikube = "latest"
 terraform = "latest"
-kubectl = "latest"
 
 [env]
