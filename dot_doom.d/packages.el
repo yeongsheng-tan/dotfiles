@@ -7,10 +7,10 @@
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-                                        ;(package! some-package)
+;(package! some-package)
+(package! eca :recipe (:host github :repo "editor-code-assistant/eca-emacs" :files ("*.el")))
 (package! feature-mode)
 (package! gherkin-mode)
-(package! lsp-volar :recipe (:host github :repo "jadestrong/lsp-volar"))
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
