@@ -277,8 +277,10 @@ export PATH=$PATH:~/.porter
 
 # podman
 #alias docker=podman
-#export DOCKER_HOST='unix:///Users/yeongshengtan/.local/share/containers/podman/machine/qemu/podman.sock'
-#export DOCKER_HOST='unix:///var/folders/36/6pb1hvb11s34y1k27xkcdw1c0000gn/T/podman/podman-machine-default-api.sock'
+#alias docker-compose=podman-compose
+export DOCKER_HOST="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
+export TESTCONTAINERS_RYUK_DISABLED=true
 
 # Secretive
 export SSH_AUTH_SOCK=/Users/yeongshengtan/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
