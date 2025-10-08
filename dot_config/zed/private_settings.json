@@ -46,6 +46,5 @@
       "ligatures": true
     }
   },
-  "vim_mode": true,
-  "projects_online_by_default": true
+  "vim_mode": true
 }
