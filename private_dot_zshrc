@@ -278,8 +278,8 @@ export PATH=$PATH:~/.porter
 # podman
 #alias docker=podman
 #alias docker-compose=podman-compose
-export DOCKER_HOST="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
+#export DOCKER_HOST="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
+#export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
 export TESTCONTAINERS_RYUK_DISABLED=true
 
 # Secretive
