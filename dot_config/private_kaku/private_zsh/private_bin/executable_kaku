@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ -n "${KAKU_BIN:-}" && -x "${KAKU_BIN}" ]]; then
+	exec "${KAKU_BIN}" "$@"
+fi
+
+for candidate in \
+	"/Applications/Kaku.app/Contents/Resources/../MacOS/kaku" \
+	"/Applications/Kaku.app/Contents/MacOS/kaku" \
+	"$HOME/Applications/Kaku.app/Contents/MacOS/kaku"; do
+	if [[ -n "$candidate" && -x "$candidate" ]]; then
+		exec "$candidate" "$@"
+	fi
+done
+
+echo "kaku: Kaku.app not found. Expected /Applications/Kaku.app." >&2
+exit 127
