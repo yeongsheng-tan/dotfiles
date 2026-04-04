@@ -6,7 +6,7 @@ if [[ -n "${KAKU_BIN:-}" && -x "${KAKU_BIN}" ]]; then
 fi
 
 for candidate in \
-	"/Applications/Kaku.app/Contents/Resources/../MacOS/kaku" \
+	"/Applications/Kaku.app/Contents/MacOS/kaku" \
 	"/Applications/Kaku.app/Contents/MacOS/kaku" \
 	"$HOME/Applications/Kaku.app/Contents/MacOS/kaku"; do
 	if [[ -n "$candidate" && -x "$candidate" ]]; then

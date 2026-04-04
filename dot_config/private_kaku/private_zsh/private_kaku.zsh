@@ -342,26 +342,17 @@ if ! (( ${+functions[_main_complete]} )) || ! (( ${+_comps} )); then
     fi
 fi
 
-# Load zsh-z only if user config has not already provided `z`.
-_kaku_has_dir_jump_provider() {
-    (( ${+functions[zshz]} )) && return 0
-    (( ${+functions[z]} )) && return 0
-    (( ${+aliases[z]} )) && return 0
-    return 1
-}
-
-if ! _kaku_has_dir_jump_provider && [[ -f "$KAKU_ZSH_DIR/plugins/zsh-z/zsh-z.plugin.zsh" ]]; then
-    # Default to smart case matching so z kaku prefers Kaku over lowercase
+# Load zsh-z (smart directory jumping) if not already provided by user config.
+if [[ -f "$KAKU_ZSH_DIR/plugins/zsh-z/zsh-z.plugin.zsh" ]] && ! (( ${+functions[zshz]} )); then
+    # Default to smart case matching so `z kaku` prefers `Kaku` over lowercase
     # path entries. Users can still override this in their own shell config.
     : "${ZSHZ_CASE:=smart}"
     export ZSHZ_CASE
     source "$KAKU_ZSH_DIR/plugins/zsh-z/zsh-z.plugin.zsh"
 fi
 
-# z supports fuzzy directory jumps, but users also expect cd + Tab to
-# reuse visited paths in a layered way. Keep default _cd behavior and
-# only fall back to zsh-z history when filesystem completion has no match.
-# Delegate ranking/matching to zshz --complete so behavior stays aligned
+# cd + Tab falls back to zsh-z frecency history when filesystem completion
+# has no match. Delegate ranking to zshz --complete so behavior stays aligned
 # with the plugin (frecency ordering, smart-case, future plugin changes).
 if (( ${+functions[zshz]} )); then
     _kaku_cd_history_complete() {
@@ -378,7 +369,6 @@ if (( ${+functions[zshz]} )); then
         local token="${PREFIX:-}"
         [[ -n "$token" ]] || return $ret
         [[ "$token" != -* ]] || return $ret
-        [[ "$token" == */* ]] || return $ret
 
         (( ${+functions[zshz]} )) || return $ret
 
@@ -456,23 +446,24 @@ if [[ -z "${KAKU_SMART_TAB_DISABLE:-}" ]] && [[ "${TERM_PROGRAM:-}" == "Kaku" ]]
     bindkey '^I' _kaku_tab_widget
 fi
 
-# Defer zsh-syntax-highlighting to first prompt (~40ms saved at startup)
+# Defer fast-syntax-highlighting to first prompt (~40ms saved at startup)
 # This plugin must be loaded LAST, and we delay it for faster shell startup.
 # If user config already loaded it, skip to avoid overriding user settings.
-if ! (( ${+functions[_zsh_highlight]} )) && [[ -f "$KAKU_ZSH_DIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
-    # Simplified highlighters for better performance (removed brackets, pattern, cursor)
-    export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-
+if ! (( ${+functions[_zsh_highlight]} )) && [[ -f "$KAKU_ZSH_DIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]]; then
     # Defer loading until first prompt display
-    zsh_syntax_highlighting_defer() {
-        source "$KAKU_ZSH_DIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    fast_syntax_highlighting_defer() {
+        source "$KAKU_ZSH_DIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+
+        # Override comment color: fsh default (fg=8) is invisible on dark backgrounds.
+        typeset -gA FAST_HIGHLIGHT_STYLES
+        FAST_HIGHLIGHT_STYLES[comment]='fg=244'
 
         # Remove this hook after first run
-        precmd_functions=("${precmd_functions[@]:#zsh_syntax_highlighting_defer}")
+        precmd_functions=("${precmd_functions[@]:#fast_syntax_highlighting_defer}")
     }
 
     # Hook into precmd (runs before prompt is displayed)
-    precmd_functions+=(zsh_syntax_highlighting_defer)
+    precmd_functions+=(fast_syntax_highlighting_defer)
 fi
 
 # Kaku AI fix hooks (error-only):
@@ -561,6 +552,53 @@ if (( $+functions[add-zle-hook-widget] )); then
     add-zle-hook-widget line-init _kaku_reset_ai_cancel_flag
 fi
 
+# AI generate: intercept Enter on "# query" lines via accept-line widget.
+# preexec does not fire for comment-only lines (zsh strips them before execution),
+# so we wrap accept-line instead. Registration is deferred to first prompt so it
+# runs after zsh-autosuggestions finishes binding its own widgets.
+_kaku_ai_waiting=0
+_kaku_ai_waiting_ts=0
+_kaku_ai_reset_waiting() { _kaku_ai_waiting=0; }
+add-zsh-hook precmd _kaku_ai_reset_waiting
+
+_kaku_ai_query_accept_line() {
+    # Block repeat Enter only while buffer still shows the # query.
+    # Auto-reset after 30 seconds to prevent permanent blocking if Lua side fails.
+    if (( _kaku_ai_waiting )); then
+        if [[ "${BUFFER[1]}" == '#' ]]; then
+            local now=$EPOCHSECONDS
+            if (( now - _kaku_ai_waiting_ts > 30 )); then
+                _kaku_ai_waiting=0
+            else
+                return
+            fi
+        else
+            _kaku_ai_waiting=0
+        fi
+    fi
+    # Only intercept a single-line comment (no newlines in buffer)
+    if [[ -z "${KAKU_AUTO_DISABLE:-}" && -n "$BUFFER" && "${BUFFER[1]}" == '#' && "$BUFFER" != *$'\n'* ]]; then
+        local query="${BUFFER:1}"
+        query="${query# }"
+        if [[ -n "$query" ]]; then
+            print -s -- "${BUFFER}"
+            _kaku_set_user_var "kaku_ai_query" "$query"
+            _kaku_ai_waiting=1
+            _kaku_ai_waiting_ts=$EPOCHSECONDS
+            # Keep # query visible; Lua sends \x15 to clear it when result arrives
+            zle reset-prompt
+            return
+        fi
+    fi
+    zle .accept-line
+}
+
+_kaku_ai_query_register_widget() {
+    zle -N accept-line _kaku_ai_query_accept_line
+    precmd_functions=("${precmd_functions[@]:#_kaku_ai_query_register_widget}")
+}
+precmd_functions+=(_kaku_ai_query_register_widget)
+
 # Auto-set TERM to xterm-256color for SSH connections when running under kaku,
 # since remote hosts typically lack the kaku terminfo entry.
 # Also auto-detect 1Password SSH agent and add IdentitiesOnly=yes to prevent
@@ -639,7 +677,7 @@ fi
 # raises a syntax error ("defining function based on alias"). Unalias first.
 if ! typeset -f sudo > /dev/null 2>&1; then
 unalias sudo 2>/dev/null || true
-sudo() {
+function sudo {
     if [[ -z "${KAKU_SUDO_SKIP_TERM_FIX-}" && "$TERM" == "kaku" ]]; then
         TERM=xterm-256color command sudo "$@"
     else

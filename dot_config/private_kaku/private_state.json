@@ -1,12 +1,12 @@
 {
-  "config_version": 17,
+  "config_version": 18,
   "window_geometry": {
-    "width": 1285,
-    "height": 876
+    "width": 1735,
+    "height": 918
   },
   "window_position": {
     "x": 0,
-    "y": 76,
+    "y": 98,
     "screen_id": 1
   }
 }
