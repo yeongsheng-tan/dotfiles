@@ -7,16 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "agent": {
-    "always_allow_tool_actions": true,
+    "tool_permissions": {
+      "default": "allow"
+    },
     "play_sound_when_agent_done": true,
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
     }
-  },
-  "features": {
-    "edit_prediction_provider": "copilot"
   },
   "auto_update_extensions": {
     "biome": true
