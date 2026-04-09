@@ -27,7 +27,7 @@
     "metrics": false
   },
   "base_keymap": "JetBrains",
-  "theme": "Dayfox - opaque",
+  "theme": "Terafox - opaque",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 15,
   "buffer_font_features": {
