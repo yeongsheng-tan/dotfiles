@@ -85,4 +85,6 @@ config.harfbuzz_features = {
 --   action = wezterm.action.TogglePaneZoomState,
 -- })
 
+config.color_scheme = 'Kaku Dark'
+config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 return config

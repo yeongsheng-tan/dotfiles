@@ -222,6 +222,9 @@ export PATH=$PATH:/Users/yeongshengtan/.config/emacs/bin
 # flutter dev
 export FLUTTER="fvm flutter"
 export PATH="$HOME/fvm/default/bin:$PATH"
+# dart installed fvm with melos (see https://medium.com/@tmenyhart/flutter-guide-for-using-fvm-with-melos-8bf9ec9493b9)
+export PUB_CACHE="$HOME/.pub-cache"
+export PATH="$PATH:$PUB_CACHE/bin"
 
 # pnpm
 export PNPM_HOME="/Users/yeongshengtan/Library/pnpm"

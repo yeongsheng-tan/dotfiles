@@ -79,19 +79,24 @@ bindkey -e
 
 # Prefix history search on Up/Down (e.g. type "curl" then press Up)
 # This is shell behavior, not terminal behavior, so Kaku configures it here.
-autoload -U up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-zmodload zsh/terminfo 2>/dev/null || true
-for _kaku_keymap in emacs viins; do
-    [[ -n "${terminfo[kcuu1]:-}" ]] && bindkey -M "$_kaku_keymap" "${terminfo[kcuu1]}" up-line-or-beginning-search
-    [[ -n "${terminfo[kcud1]:-}" ]] && bindkey -M "$_kaku_keymap" "${terminfo[kcud1]}" down-line-or-beginning-search
-    bindkey -M "$_kaku_keymap" '^[[A' up-line-or-beginning-search
-    bindkey -M "$_kaku_keymap" '^[[B' down-line-or-beginning-search
-    bindkey -M "$_kaku_keymap" '^[OA' up-line-or-beginning-search
-    bindkey -M "$_kaku_keymap" '^[OB' down-line-or-beginning-search
-done
-unset _kaku_keymap
+# Skip if an external history navigator (atuin, mcfly, etc.) already owns the
+# Up key. After "bindkey -e" the emacs default for ^[[A is "up-line-or-history";
+# any other value means a third-party tool has already claimed it.
+if [[ "$(bindkey -M emacs '^[[A' 2>/dev/null)" == *"up-line-or-history"* ]]; then
+    autoload -U up-line-or-beginning-search down-line-or-beginning-search
+    zle -N up-line-or-beginning-search
+    zle -N down-line-or-beginning-search
+    zmodload zsh/terminfo 2>/dev/null || true
+    for _kaku_keymap in emacs viins; do
+        [[ -n "${terminfo[kcuu1]:-}" ]] && bindkey -M "$_kaku_keymap" "${terminfo[kcuu1]}" up-line-or-beginning-search
+        [[ -n "${terminfo[kcud1]:-}" ]] && bindkey -M "$_kaku_keymap" "${terminfo[kcud1]}" down-line-or-beginning-search
+        bindkey -M "$_kaku_keymap" '^[[A' up-line-or-beginning-search
+        bindkey -M "$_kaku_keymap" '^[[B' down-line-or-beginning-search
+        bindkey -M "$_kaku_keymap" '^[OA' up-line-or-beginning-search
+        bindkey -M "$_kaku_keymap" '^[OB' down-line-or-beginning-search
+    done
+    unset _kaku_keymap
+fi
 
 # Kaku line-selection widgets for modified arrows in prompt editing.
 _kaku_select_left_char() {
@@ -296,7 +301,7 @@ alias glo='git log --oneline --decorate'
 alias glg='git log --stat'
 alias glgp='git log --stat -p'
 
-# yazi launcher — cd into the directory yazi is in when you exit.
+# yazi launcher - cd into the directory yazi is in when you exit.
 'y'() {
     emulate -L zsh
     setopt local_options no_sh_word_split
@@ -318,6 +323,23 @@ alias glgp='git log --stat -p'
         builtin cd -- "$cwd"
     fi
     rm -f -- "$tmp"
+}
+
+# k - AI chat CLI bundled with Kaku.
+'k'() {
+    emulate -L zsh
+    local k_cmd
+    for _candidate in         "${KAKU_ZSH_DIR:+$KAKU_ZSH_DIR/../../MacOS/k}"         "$HOME/Applications/Kaku.app/Contents/MacOS/k"         "/Applications/Kaku.app/Contents/MacOS/k"; do
+        if [[ -x "$_candidate" ]]; then
+            k_cmd="$_candidate"
+            break
+        fi
+    done
+    if [[ -z "$k_cmd" ]]; then
+        echo "k: Kaku app not found. Install Kaku from https://github.com/tw93/Kaku"
+        return 127
+    fi
+    "$k_cmd" "$@"
 }
 
 # Load Plugins (Performance Optimized)
@@ -404,24 +426,41 @@ _kaku_has_autosuggest_system() {
     return 1
 }
 
+typeset -g _kaku_autosuggest_cli_provider=""
+typeset -g _kaku_external_autosuggest_provider=0
+
+if _kaku_has_autosuggest_system; then
+    _kaku_external_autosuggest_provider=1
+fi
+
 # Load zsh-autosuggestions only if:
 # 1. User config has not loaded it yet (_zsh_autosuggest_start not defined)
 # 2. No other autosuggest system is active (to avoid widget wrapping conflicts)
-if ! (( ${+functions[_zsh_autosuggest_start]} )) && ! _kaku_has_autosuggest_system && [[ -f "$KAKU_ZSH_DIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+if ! (( ${+functions[_zsh_autosuggest_start]} )) && [[ "${_kaku_external_autosuggest_provider:-0}" != "1" ]] && [[ -f "$KAKU_ZSH_DIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
     source "$KAKU_ZSH_DIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 unset -f _kaku_has_autosuggest_system 2>/dev/null
 
 # Smart Tab behavior:
 # - Use completion while typing arguments/path-like tokens
-# - Accept inline suggestion first only for the first command token
+# - For the first command token, prefer completion by default so Tab reveals
+#   candidates instead of always accepting recent-history suggestions
+# - Set KAKU_TAB_ACCEPT_SUGGEST_FIRST=1 to restore suggestion-first behavior
 # - Only claim Tab inside Kaku sessions unless explicitly disabled
 if [[ -z "${KAKU_SMART_TAB_DISABLE:-}" ]] && [[ "${TERM_PROGRAM:-}" == "Kaku" ]]; then
     _kaku_tab_widget() {
         emulate -L zsh
 
         local has_suggestion=0
-        if (( ${+widgets[autosuggest-accept]} )) && [[ -n "${POSTDISPLAY:-}" ]]; then
+        local prefer_suggestion_first=0
+
+        if [[ "${KAKU_TAB_ACCEPT_SUGGEST_FIRST:-0}" == "1" ]]; then
+            prefer_suggestion_first=1
+        fi
+
+        # When Kaku defers autosuggestions to an external provider, keep Tab
+        # as completion-only to avoid widget recursion.
+        if [[ "${_kaku_external_autosuggest_provider:-0}" != "1" ]] && (( ${+widgets[autosuggest-accept]} )) && [[ -n "${POSTDISPLAY:-}" ]]; then
             has_suggestion=1
         fi
 
@@ -436,7 +475,7 @@ if [[ -z "${KAKU_SMART_TAB_DISABLE:-}" ]] && [[ "${TERM_PROGRAM:-}" == "Kaku" ]]
             return
         fi
 
-        if (( has_suggestion )); then
+        if (( has_suggestion )) && (( prefer_suggestion_first )); then
             zle autosuggest-accept
         else
             zle expand-or-complete
@@ -486,7 +525,7 @@ _kaku_set_user_var() {
 
     local encoded=""
     if command -v base64 >/dev/null 2>&1; then
-        encoded="$(printf '%s' "$value" | base64 | tr -d '\r\n')"
+        encoded="$(printf '%s' "$value" | base64)"
     else
         return
     fi
@@ -585,11 +624,14 @@ _kaku_ai_query_accept_line() {
             _kaku_set_user_var "kaku_ai_query" "$query"
             _kaku_ai_waiting=1
             _kaku_ai_waiting_ts=$EPOCHSECONDS
-            # Keep # query visible; Lua sends \x15 to clear it when result arrives
-            zle reset-prompt
+            # Keep # query visible; Lua sends \x15 to clear it when result arrives.
+            # Do NOT call 'zle reset-prompt' here: it redraws the prompt with
+            # BUFFER still set, causing the query line to appear twice.
+            POSTDISPLAY=
             return
         fi
     fi
+    POSTDISPLAY=
     zle .accept-line
 }
 
