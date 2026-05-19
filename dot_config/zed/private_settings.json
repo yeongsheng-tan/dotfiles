@@ -7,6 +7,23 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "context_servers": {
+    "mcp-server-github": {
+      "enabled": true,
+      "remote": false,
+      "settings": {}
+    },
+    "postgres-context-server": {
+      "enabled": true,
+      "remote": false,
+      "settings": {}
+    },
+    "svelte-mcp": {
+      "enabled": false,
+      "remote": false,
+      "settings": {}
+    }
+  },
   "project_panel": {
     "dock": "right"
   },
