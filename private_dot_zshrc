@@ -344,3 +344,10 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 if [[ -z ${path[(r)$HOME/.local/bin]} ]]; then
   path=("$HOME/.local/bin" $path)
 fi
+
+# Added by Antigravity IDE
+export PATH="/Users/yeongshengtan/.antigravity-ide/antigravity-ide/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/yeongshengtan/.local/bin:$PATH"
