@@ -1,0 +1,3 @@
+# Local-only chezmoi data — secrets that must NOT be pushed.
+# chezmoi still reads these when rendering templates; git ignores them.
+.chezmoidata/
