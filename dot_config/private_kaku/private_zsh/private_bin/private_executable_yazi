@@ -94,7 +94,7 @@ ensure_theme() {
 
 	if [[ ! -f "$YAZI_THEME_FILE" ]]; then
 		cat <<BLOCK >"$YAZI_THEME_FILE"
-"\$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+\$schema = "https://yazi-rs.github.io/schemas/theme.json"
 
 # Kaku manages the [flavor] section below so Yazi matches the current Kaku theme.
 $(managed_block "$flavor")

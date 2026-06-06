@@ -51,8 +51,8 @@ zmodule magic-enter --use degit
 # zmodule asdf --use degit
 # exa
 zmodule exa --use degit
-# fasd
-zmodule fasd --use degit
+# fasd — removed: consolidated on zoxide for directory jumping (see ~/.zshrc)
+# zmodule fasd --use degit
 # fzf
 zmodule fzf --use degit
 # kubernetes
@@ -99,6 +99,7 @@ zmodule joke/zim-skaffold --use degit
 zmodule joke/zim-steampipe --use degit
 # zim-yq
 zmodule joke/zim-yq --use degit
-# zim-zoxide
-zmodule kiesman99/zim-zoxide --use degit
+# zim-zoxide — removed: init moved to end of ~/.zshrc so it loads after
+# all other hooks (fasd/mise/atuin/direnv) and zoxide's doctor stops nagging.
+# zmodule kiesman99/zim-zoxide --use degit
 # }}} End configuration added by Zim install

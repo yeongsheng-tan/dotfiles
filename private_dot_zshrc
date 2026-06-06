@@ -138,20 +138,8 @@ unset key
 # Set global EDITOR as neovim
 export EDITOR=nvim
 
-# fasd
- #eval "$(fasd --init auto)"
-#fasd_cache="$HOME/.fasd-init-zsh"
-#if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-#  fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
-#  eval "$(fasd --init posix-alias zsh-hook)" >| "$fasd_cache"
-#fi
-#source "$fasd_cache"
-#unset fasd_cache
-# fasd - defer completion setup
-if command -v fasd &>/dev/null; then
-  eval "$(fasd --init posix-alias zsh-hook)"
-  # Note: fasd completions will be loaded later
-fi
+# fasd removed — consolidated on zoxide for directory jumping (zoxide init is
+# near the end of this file, just before Kaku). zoxide replaces fasd's `z`.
 
 # autojump
 #[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
@@ -304,16 +292,6 @@ fpath=(/Users/yeongshengtan/.docker/completions $fpath)
 #  compinit -u
 #fi
 
-# Now load all the deferred completions
-if command -v fasd &>/dev/null; then
-  fasd_cache="$HOME/.fasd-init-zsh-comp"
-  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
-  fi
-  [ -f "$fasd_cache" ] && source "$fasd_cache"
-  unset fasd_cache
-fi
-
 # fzf completions
 if [ -e ~/.fzf ] && [ -f ~/.fzf/shell/completion.zsh ]; then
   source ~/.fzf/shell/completion.zsh
@@ -333,6 +311,12 @@ fi
 
 # Added by Antigravity
 export PATH="/Users/yeongshengtan/.antigravity/antigravity/bin:$PATH"
+
+# zoxide — init BEFORE Kaku so Kaku's _kaku_has_jump_provider detects __zoxide_z
+# and skips its bundled zsh-z. Placed after mise/atuin/direnv (which rebuild
+# chpwd_functions) so zoxide's hook stays last → no doctor nag. Makes `z` = zoxide.
+eval "$(zoxide init zsh)"
+
 [[ -f "$HOME/.config/kaku/zsh/kaku.zsh" ]] && source "$HOME/.config/kaku/zsh/kaku.zsh" # Kaku Shell Integration
 ## [/Completion]
 
