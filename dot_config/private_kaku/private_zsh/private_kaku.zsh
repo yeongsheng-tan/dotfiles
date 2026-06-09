@@ -452,9 +452,10 @@ unset -f _kaku_has_autosuggest_system 2>/dev/null
 
 # Smart Tab behavior:
 # - Use completion while typing arguments/path-like tokens
-# - For the first command token, prefer completion by default so Tab reveals
-#   candidates instead of always accepting recent-history suggestions
-# - Set KAKU_TAB_ACCEPT_SUGGEST_FIRST=1 to restore suggestion-first behavior
+# - When Kaku sets KAKU_TAB_ACCEPT_SUGGEST_FIRST=1, accept a visible
+#   autosuggestion before falling back to completion
+# - Without KAKU_TAB_ACCEPT_SUGGEST_FIRST, prefer completion so Tab reveals
+#   candidates instead of accepting recent-history suggestions
 # - Only claim Tab inside Kaku sessions unless explicitly disabled
 if [[ -z "${KAKU_SMART_TAB_DISABLE:-}" ]] && [[ "${TERM_PROGRAM:-}" == "Kaku" ]]; then
     _kaku_tab_widget() {
@@ -759,7 +760,7 @@ fi
 # users who picked their own color are preserved.
 _kaku_apply_highlight_styles() {
     # Both fast-syntax-highlighting and zsh-syntax-highlighting ship the same
-    # invisible default for : fg=black,bold (older versions: fg=8).
+    # invisible default for `[comment]`: fg=black,bold (older versions: fg=8).
     # Kaku Dark's color_overrides collapse those to #3A3942 against #1F1D2C,
     # so the # character and any zsh-style # comment becomes unreadable.
     # Replace ONLY the known defaults; leave any other value alone so a user
