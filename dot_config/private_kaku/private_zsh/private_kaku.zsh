@@ -507,6 +507,12 @@ if ! (( ${+functions[_zsh_highlight]} )) && [[ -f "$KAKU_ZSH_DIR/plugins/fast-sy
         typeset -gA FAST_HIGHLIGHT_STYLES
         FAST_HIGHLIGHT_STYLES[comment]='fg=249'
 
+        # Drop the underline on existing-directory paths: fsh default for
+        # path-to-dir is fg=magenta,underline, and that underline stacks with
+        # Kaku's hyperlink hover underline into a confusing double line. Keep
+        # the magenta color so a valid directory still reads as a path.
+        FAST_HIGHLIGHT_STYLES[path-to-dir]='fg=magenta'
+
         # Remove this hook after first run
         precmd_functions=("${precmd_functions[@]:#fast_syntax_highlighting_defer}")
     }
