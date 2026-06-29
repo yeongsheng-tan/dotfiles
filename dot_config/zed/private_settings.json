@@ -7,6 +7,30 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "language_models": {
+    "openai_compatible": {
+      "ornith-local": {
+        "api_url": "http://localhost:8000/v1",
+        "available_models": [
+          {
+            "name": "deepreinforce-ai/Ornith-1.0-35B-GGUF",
+            "max_tokens": 200000,
+            "max_output_tokens": 262144,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "proxy": "",
   "context_servers": {
     "mcp-server-github": {
       "enabled": true,
@@ -37,17 +61,21 @@
     "dock": "right"
   },
   "edit_predictions": {
-    "provider": "copilot"
+    "open_ai_compatible_api": {
+      "model": "eepreinforce-ai/Ornith-1.0-35B-GGUF",
+      "api_url": "http://localhost:8000/v1"
+    },
+    "provider": "open_ai_compatible_api"
   },
   "agent": {
     "dock": "left",
     "tool_permissions": {
       "default": "allow"
     },
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "ornith-local",
+      "model": "deepreinforce-ai/Ornith-1.0-35B-GGUF"
     }
   },
   "auto_update_extensions": {
