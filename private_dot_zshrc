@@ -335,3 +335,6 @@ export PATH="/Users/yeongshengtan/.antigravity-ide/antigravity-ide/bin:$PATH"
 
 # Added by Antigravity CLI installer
 export PATH="/Users/yeongshengtan/.local/bin:$PATH"
+
+# LMStudio
+export PATH="/Users/yeongshengtan/.lmstudio/bin:$PATH"
