@@ -9,7 +9,55 @@ export PATH="$KAKU_ZSH_DIR/bin:$PATH"
 # Initialize Starship (Cross-shell prompt)
 # Use system installation managed by Homebrew (or user PATH).
 if command -v starship &> /dev/null; then
-    eval "$(starship init zsh)"
+    # Cache the full starship init script. Plain `starship init zsh` forks
+    # starship on every new shell (twice: the stub it prints re-runs
+    # `starship init zsh --print-full-init`), and that fork+exec is the
+    # largest fixed cost of shell startup. The cache key (binary path +
+    # mtime) is recorded on the first line, so upgrading or relocating
+    # starship refreshes the cache automatically.
+    _kaku_starship_init_ok=0
+    _kaku_starship_cache="$KAKU_ZSH_DIR/cache/starship-init.zsh"
+    _kaku_starship_key=""
+    if zmodload -F zsh/stat b:zstat 2>/dev/null; then
+        typeset -a _kaku_starship_stat
+        if zstat -A _kaku_starship_stat +mtime -- "${commands[starship]}" 2>/dev/null; then
+            _kaku_starship_key="# ${commands[starship]} ${_kaku_starship_stat[1]}"
+        fi
+        unset _kaku_starship_stat
+    fi
+    if [[ -n "$_kaku_starship_key" && -r "$_kaku_starship_cache" ]]; then
+        _kaku_starship_cache_key=""
+        IFS= read -r _kaku_starship_cache_key < "$_kaku_starship_cache" 2>/dev/null
+        if [[ "$_kaku_starship_cache_key" == "$_kaku_starship_key" ]]; then
+            builtin source "$_kaku_starship_cache"
+            _kaku_starship_init_ok=1
+        fi
+        unset _kaku_starship_cache_key
+    fi
+    if (( ! _kaku_starship_init_ok )); then
+        _kaku_starship_init="$(starship init zsh --print-full-init)"
+        if [[ -n "$_kaku_starship_init" ]]; then
+            eval "$_kaku_starship_init"
+            if [[ -n "$_kaku_starship_key" ]]; then
+                # Write via a per-pid temp file and rename so two shells
+                # starting concurrently can't interleave into a truncated
+                # cache that later shells would keep sourcing.
+                command mkdir -p "${_kaku_starship_cache:h}" 2>/dev/null
+                if {
+                    builtin print -r -- "$_kaku_starship_key"
+                    builtin print -r -- "$_kaku_starship_init"
+                } >| "${_kaku_starship_cache}.$$" 2>/dev/null; then
+                    command mv -f "${_kaku_starship_cache}.$$" "$_kaku_starship_cache" 2>/dev/null                         || command rm -f "${_kaku_starship_cache}.$$" 2>/dev/null
+                fi
+            fi
+        else
+            # Fall back to the stock two-stage init if --print-full-init
+            # unexpectedly produced nothing.
+            eval "$(starship init zsh)"
+        fi
+        unset _kaku_starship_init
+    fi
+    unset _kaku_starship_init_ok _kaku_starship_cache _kaku_starship_key
 
     # Kaku workaround: Fix Zsh + Starship bug where Ctrl-C prints the literal RPROMPT string.
     # When Zsh receives SIGINT during prompt evaluation, it aborts the command
