@@ -10,100 +10,102 @@
   "language_models": {
     "openai_compatible": {
       "ornith-local": {
-        "api_url": "http://localhost:8000/v1",
+        "api_url": "http://localhost:1234/v1",
         "available_models": [
           {
             "name": "deepreinforce-ai/Ornith-1.0-35B-GGUF",
-            "max_tokens": 200000,
-            "max_output_tokens": 262144,
-            "max_completion_tokens": 200000,
+            "display_name": "Ornith 1.0 35B (LM Studio)",
+            "max_tokens": 32768,
+            "max_output_tokens": 4096,
             "capabilities": {
-              "tools": true,
-              "images": false,
               "parallel_tool_calls": false,
               "prompt_cache_key": false,
-              "chat_completions": true,
-              "interleaved_reasoning": false
-            }
-          }
-        ]
-      }
-    }
+              "tools": false,
+              "images": false,
+            },
+          },
+        ],
+      },
+    },
   },
   "proxy": "",
   "context_servers": {
     "mcp-server-github": {
       "enabled": true,
       "remote": false,
-      "settings": {}
+      "settings": {},
     },
     "postgres-context-server": {
       "enabled": true,
       "remote": false,
-      "settings": {}
+      "settings": {},
     },
     "svelte-mcp": {
       "enabled": false,
       "remote": false,
-      "settings": {}
-    }
+      "settings": {},
+    },
   },
   "project_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "outline_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "collaboration_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "git_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "edit_predictions": {
     "open_ai_compatible_api": {
       "model": "eepreinforce-ai/Ornith-1.0-35B-GGUF",
-      "api_url": "http://localhost:8000/v1"
+      "api_url": "http://localhost:1234/v1",
     },
-    "provider": "open_ai_compatible_api"
+    "provider": "open_ai_compatible_api",
   },
   "agent": {
     "dock": "left",
+    "auto_compact": {
+      "enabled": true,
+      "threshold": "80%",
+    },
     "tool_permissions": {
-      "default": "allow"
+      "default": "allow",
     },
     "play_sound_when_agent_done": "always",
     "default_model": {
       "provider": "ornith-local",
-      "model": "deepreinforce-ai/Ornith-1.0-35B-GGUF"
-    }
+      "model": "deepreinforce-ai/Ornith-1.0-35B-GGUF",
+    },
   },
   "auto_update_extensions": {
-    "biome": true
+    "biome": true,
   },
   "telemetry": {
-    "metrics": false
+    "metrics": false,
   },
   "base_keymap": "JetBrains",
   "theme": "Terafox - opaque",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 15,
   "buffer_font_features": {
-    "ligatures": true
+    "ligatures": true,
   },
   "tab_size": 2,
   "autosave": {
     "after_delay": {
-      "milliseconds": 100
-    }
+      "milliseconds": 100,
+    },
   },
   "terminal": {
     "copy_on_select": true,
     "font_family": "JetBrainsMono Nerd Font",
     "font_size": 14,
     "font_features": {
-      "ligatures": true
-    }
+      "ligatures": true,
+    },
   },
-  "vim_mode": true
+  "vim_mode": true,
 }
