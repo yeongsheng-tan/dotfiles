@@ -724,42 +724,37 @@ precmd_functions+=(_kaku_ai_query_register_widget)
 # Set KAKU_SSH_SKIP_1PASSWORD_FIX=1 to disable the 1Password behavior.
 # Guard: only define if no existing ssh function is present, so user-defined
 # wrappers (e.g. from fzf-ssh, autossh plugins) are not silently replaced.
-_kaku_wrapped_ssh() {
-    local -a extra_opts=()
-
-    # 1Password SSH agent fix: auto-add IdentitiesOnly=yes to prevent
-    # "Too many authentication failures" when 1Password offers all stored keys.
-    # Set KAKU_SSH_SKIP_1PASSWORD_FIX=1 to disable.
-    if [[ -z "${KAKU_SSH_SKIP_1PASSWORD_FIX-}" ]]; then
-        local sock="${SSH_AUTH_SOCK:-}"
-        if [[ "$sock" == *1password* || "$sock" == *2BUA8C4S2C* ]]; then
-            local has_identitiesonly=false prev=""
-            for arg in "$@"; do
-                [[ "$prev" == "-o" && "$arg" == IdentitiesOnly=* ]] && has_identitiesonly=true
-                [[ "$arg" == -oIdentitiesOnly=* ]] && has_identitiesonly=true
-                prev="$arg"
-            done
-            $has_identitiesonly || extra_opts+=(-o "IdentitiesOnly=yes")
-        fi
-    fi
-
-    if [[ "$TERM" == "kaku" ]]; then
-        TERM=xterm-256color command ssh "${extra_opts[@]}" "$@"
-    else
-        command ssh "${extra_opts[@]}" "$@"
-    fi
-}
+# The wrapper body must stay self-contained: agent snapshot tools (Claude
+# Code and similar) capture the ssh function into shell snapshots but drop
+# _-prefixed helpers, so calling one from here leaves a dangling reference
+# in snapshot-restored shells (#493).
 if (( $+aliases[ssh] )); then
     typeset _kaku_existing_ssh_alias="${aliases[ssh]}"
     function ssh {
-        local -a extra_opts=()
-        local -a _kaku_alias_words
+        local -a _kaku_alias_words _kaku_ssh_cmd _kaku_ssh_args
+        _kaku_alias_words=(${(z)_kaku_existing_ssh_alias})
+        # Snapshot-restored shells keep this function but not the alias
+        # variable; fall back to plain ssh instead of exec'ing "$1".
+        if [[ ${#_kaku_alias_words[@]} -eq 0 ]]; then
+            _kaku_ssh_cmd=(command ssh)
+            _kaku_ssh_args=("$@")
+        elif [[ "${_kaku_alias_words[1]-}" == "ssh" ]]; then
+            _kaku_ssh_cmd=(command ssh)
+            _kaku_ssh_args=("${(@)_kaku_alias_words[2,-1]}" "$@")
+        elif [[ "${_kaku_alias_words[1]-}" == "command" && "${_kaku_alias_words[2]-}" == "ssh" ]]; then
+            _kaku_ssh_cmd=(command ssh)
+            _kaku_ssh_args=("${(@)_kaku_alias_words[3,-1]}" "$@")
+        else
+            _kaku_ssh_cmd=("${_kaku_alias_words[@]}")
+            _kaku_ssh_args=("$@")
+        fi
 
+        local -a extra_opts=()
         if [[ -z "${KAKU_SSH_SKIP_1PASSWORD_FIX-}" ]]; then
             local sock="${SSH_AUTH_SOCK:-}"
             if [[ "$sock" == *1password* || "$sock" == *2BUA8C4S2C* ]]; then
-                local has_identitiesonly=false prev=""
-                for arg in "$@"; do
+                local has_identitiesonly=false prev="" arg
+                for arg in "${_kaku_ssh_args[@]}"; do
                     [[ "$prev" == "-o" && "$arg" == IdentitiesOnly=* ]] && has_identitiesonly=true
                     [[ "$arg" == -oIdentitiesOnly=* ]] && has_identitiesonly=true
                     prev="$arg"
@@ -768,21 +763,33 @@ if (( $+aliases[ssh] )); then
             fi
         fi
 
-        _kaku_alias_words=(${(z)_kaku_existing_ssh_alias})
-        if [[ "${_kaku_alias_words[1]-}" == "ssh" ]]; then
-            _kaku_wrapped_ssh "${(@)_kaku_alias_words[2,-1]}" "$@"
-        elif [[ "${_kaku_alias_words[1]-}" == "command" && "${_kaku_alias_words[2]-}" == "ssh" ]]; then
-            _kaku_wrapped_ssh "${(@)_kaku_alias_words[3,-1]}" "$@"
-        elif [[ "$TERM" == "kaku" ]]; then
-            TERM=xterm-256color "${_kaku_alias_words[@]}" "${extra_opts[@]}" "$@"
+        if [[ "$TERM" == "kaku" ]]; then
+            TERM=xterm-256color "${_kaku_ssh_cmd[@]}" "${extra_opts[@]}" "${_kaku_ssh_args[@]}"
         else
-            "${_kaku_alias_words[@]}" "${extra_opts[@]}" "$@"
+            "${_kaku_ssh_cmd[@]}" "${extra_opts[@]}" "${_kaku_ssh_args[@]}"
         fi
     }
     unalias ssh
 elif ! typeset -f ssh > /dev/null 2>&1; then
 function ssh {
-    _kaku_wrapped_ssh "$@"
+    local -a extra_opts=()
+    if [[ -z "${KAKU_SSH_SKIP_1PASSWORD_FIX-}" ]]; then
+        local sock="${SSH_AUTH_SOCK:-}"
+        if [[ "$sock" == *1password* || "$sock" == *2BUA8C4S2C* ]]; then
+            local has_identitiesonly=false prev="" arg
+            for arg in "$@"; do
+                [[ "$prev" == "-o" && "$arg" == IdentitiesOnly=* ]] && has_identitiesonly=true
+                [[ "$arg" == -oIdentitiesOnly=* ]] && has_identitiesonly=true
+                prev="$arg"
+            done
+            $has_identitiesonly || extra_opts+=(-o "IdentitiesOnly=yes")
+        fi
+    fi
+    if [[ "$TERM" == "kaku" ]]; then
+        TERM=xterm-256color command ssh "${extra_opts[@]}" "$@"
+    else
+        command ssh "${extra_opts[@]}" "$@"
+    fi
 }
 fi
 
