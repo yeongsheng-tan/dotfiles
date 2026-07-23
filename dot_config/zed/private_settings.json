@@ -76,8 +76,8 @@
     },
     "play_sound_when_agent_done": "always",
     "default_model": {
-      "provider": "ornith-local",
-      "model": "deepreinforce-ai/Ornith-1.0-35B-GGUF",
+      "provider": "lmstudio",
+      "model": "google/gemma-4-31b-qat",
     },
   },
   "auto_update_extensions": {

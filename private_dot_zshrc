@@ -100,6 +100,9 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Initialize modules
 # ------------------
 
+# Completion fpath additions (must be set before Zim's compinit runs below)
+fpath=(/Users/yeongshengtan/.docker/completions ~/.grok/completions/zsh $fpath)
+
 ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -283,8 +286,7 @@ export SSH_AUTH_SOCK=/Users/yeongshengtan/Library/Containers/com.maxgoedjen.Secr
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
 
-# Docker completions path (this needs to be set before compinit)
-fpath=(/Users/yeongshengtan/.docker/completions $fpath)
+# Docker completions path: moved above Zim init, see top of file
 
 # Ensure completion system is available
 #if ! command -v compdef &>/dev/null; then
@@ -338,3 +340,11 @@ export PATH="/Users/yeongshengtan/.local/bin:$PATH"
 
 # LMStudio
 export PATH="/Users/yeongshengtan/.lmstudio/bin:$PATH"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+# fpath moved above Zim init; compinit already ran once there
+# <<< grok installer <<<
+
+# kimi-code
+export PATH="/Users/yeongshengtan/.kimi-code/bin:$PATH"
