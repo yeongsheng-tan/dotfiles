@@ -6,9 +6,9 @@ export KAKU_ZSH_DIR="$HOME/.config/kaku/zsh"
 # Add Kaku managed bin to PATH (kaku wrapper and user tools)
 export PATH="$KAKU_ZSH_DIR/bin:$PATH"
 
-# Initialize Starship (Cross-shell prompt)
-# Use system installation managed by Homebrew (or user PATH).
-if command -v starship &> /dev/null; then
+# Initialize Starship only inside Kaku. The managed file is sourced by every
+# zsh so PATH and shared helpers remain available in IDE and system terminals.
+if [[ "${TERM_PROGRAM:-}" == "Kaku" ]] && command -v starship &> /dev/null; then
     # Cache the full starship init script. Plain `starship init zsh` forks
     # starship on every new shell (twice: the stub it prints re-runs
     # `starship init zsh --print-full-init`), and that fork+exec is the
@@ -601,6 +601,20 @@ _kaku_set_user_var() {
     fi
 }
 
+# Authenticate Kaku's privileged control messages so arbitrary PTY output
+# cannot trigger local AI requests or reuse the user's assistant credentials.
+_kaku_set_ai_user_var() {
+    local name="$1"
+    local value="$2"
+    local capability_file="$HOME/.config/kaku/ai_inline_capability"
+    local capability=""
+
+    [[ -r "$capability_file" ]] || return 1
+    IFS= read -r capability < "$capability_file" || return 1
+    [[ -n "$capability" ]] || return 1
+    _kaku_set_user_var "$name" "${capability}:${value}"
+}
+
 # Only emit exit code when a real command was executed.
 # Empty Enter should not re-trigger AI suggestions for the previous failure.
 typeset -g _kaku_ai_cmd_pending=0
@@ -610,7 +624,7 @@ _kaku_ai_preexec() {
         return
     fi
     _kaku_ai_cmd_pending=1
-    _kaku_set_user_var "kaku_last_cmd" "$1"
+    _kaku_set_ai_user_var "kaku_last_cmd" "$1" || true
 }
 
 _kaku_ai_precmd() {
@@ -622,7 +636,7 @@ _kaku_ai_precmd() {
     if [[ "${_kaku_ai_cmd_pending:-0}" != "1" ]]; then
         return 0
     fi
-    _kaku_set_user_var "kaku_last_exit_code" "$last_exit_code"
+    _kaku_set_ai_user_var "kaku_last_exit_code" "$last_exit_code" || true
     _kaku_ai_cmd_pending=0
 }
 
@@ -640,7 +654,7 @@ typeset -g _kaku_ai_cancel_sent=0
 
 _kaku_cancel_ai_on_typing() {
     if [[ "$_kaku_ai_cancel_sent" == "0" && -n "$BUFFER" ]]; then
-        _kaku_set_user_var "kaku_user_typing" "1"
+        _kaku_set_ai_user_var "kaku_user_typing" "1" || true
         _kaku_ai_cancel_sent=1
     fi
 }
@@ -697,14 +711,15 @@ _kaku_ai_query_accept_line() {
         body="${body# }"
         if [[ -n "$body" ]]; then
             print -s -- "${BUFFER}"
-            _kaku_set_user_var "kaku_ai_query" "[mode:${mode}] ${body}"
-            _kaku_ai_waiting=1
-            _kaku_ai_waiting_ts=$EPOCHSECONDS
-            # Keep # query visible; Lua sends \x15 to clear it when result arrives.
-            # Do NOT call 'zle reset-prompt' here: it redraws the prompt with
-            # BUFFER still set, causing the query line to appear twice.
-            POSTDISPLAY=
-            return
+            if _kaku_set_ai_user_var "kaku_ai_query" "[mode:${mode}] ${body}"; then
+                _kaku_ai_waiting=1
+                _kaku_ai_waiting_ts=$EPOCHSECONDS
+                # Keep # query visible; Lua sends \x15 to clear it when result arrives.
+                # Do NOT call 'zle reset-prompt' here: it redraws the prompt with
+                # BUFFER still set, causing the query line to appear twice.
+                POSTDISPLAY=
+                return
+            fi
         fi
     fi
     POSTDISPLAY=
@@ -744,6 +759,12 @@ if (( $+aliases[ssh] )); then
         elif [[ "${_kaku_alias_words[1]-}" == "command" && "${_kaku_alias_words[2]-}" == "ssh" ]]; then
             _kaku_ssh_cmd=(command ssh)
             _kaku_ssh_args=("${(@)_kaku_alias_words[3,-1]}" "$@")
+        elif [[ "${_kaku_alias_words[1]-}" == *=* ]]; then
+            # Alias starts with VAR=value prefixes (e.g. alias ssh='TERM=xterm ssh');
+            # expanded array words are not re-parsed as assignments, so route
+            # through env to keep them out of command position.
+            _kaku_ssh_cmd=(env "${_kaku_alias_words[@]}")
+            _kaku_ssh_args=("$@")
         else
             _kaku_ssh_cmd=("${_kaku_alias_words[@]}")
             _kaku_ssh_args=("$@")
@@ -763,7 +784,7 @@ if (( $+aliases[ssh] )); then
             fi
         fi
 
-        if [[ "$TERM" == "kaku" ]]; then
+        if [[ -z "${KAKU_SSH_SKIP_TERM_FIX-}" && "$TERM" == "kaku" ]]; then
             TERM=xterm-256color "${_kaku_ssh_cmd[@]}" "${extra_opts[@]}" "${_kaku_ssh_args[@]}"
         else
             "${_kaku_ssh_cmd[@]}" "${extra_opts[@]}" "${_kaku_ssh_args[@]}"
@@ -785,10 +806,23 @@ function ssh {
             $has_identitiesonly || extra_opts+=(-o "IdentitiesOnly=yes")
         fi
     fi
-    if [[ "$TERM" == "kaku" ]]; then
+    if [[ -z "${KAKU_SSH_SKIP_TERM_FIX-}" && "$TERM" == "kaku" ]]; then
         TERM=xterm-256color command ssh "${extra_opts[@]}" "$@"
     else
         command ssh "${extra_opts[@]}" "$@"
+    fi
+}
+fi
+
+# Same TERM fix for mosh: mosh-server inherits TERM on the remote side, so a
+# kaku TERM breaks remote rendering exactly like plain ssh would. Guard: keep
+# user-defined mosh functions and aliases untouched. Self-contained (#493).
+if command -v mosh > /dev/null 2>&1 && ! typeset -f mosh > /dev/null 2>&1 && ! (( $+aliases[mosh] )); then
+function mosh {
+    if [[ -z "${KAKU_SSH_SKIP_TERM_FIX-}" && "$TERM" == "kaku" ]]; then
+        TERM=xterm-256color command mosh "$@"
+    else
+        command mosh "$@"
     fi
 }
 fi
