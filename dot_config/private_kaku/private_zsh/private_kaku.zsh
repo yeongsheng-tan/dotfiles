@@ -579,19 +579,22 @@ _kaku_set_user_var() {
 
     # Kaku defaults TERM to xterm-256color for SSH compatibility.
     # Use WEZTERM_PANE presence to detect Kaku/WezTerm panes reliably.
+    # These guards return 1: a bare return inherits the guard's own success
+    # status, which made callers believe the var was emitted and left the
+    # zle # widget blocking Enter in non-Kaku terminals (#511).
     if [[ "$TERM" != "kaku" && -z "${WEZTERM_PANE:-}" ]]; then
-        return
+        return 1
     fi
 
     if [[ "${WEZTERM_SHELL_SKIP_USER_VARS:-}" == "1" ]]; then
-        return
+        return 1
     fi
 
     local encoded=""
     if command -v base64 >/dev/null 2>&1; then
         encoded="$(printf '%s' "$value" | base64)"
     else
-        return
+        return 1
     fi
 
     if [[ -n "${TMUX:-}" ]]; then
@@ -610,7 +613,9 @@ _kaku_set_ai_user_var() {
     local capability=""
 
     [[ -r "$capability_file" ]] || return 1
-    IFS= read -r capability < "$capability_file" || return 1
+    # read reports EOF as failure when the file lacks a trailing newline,
+    # but still fills the variable; accept that case (#511).
+    IFS= read -r capability < "$capability_file" || [[ -n "$capability" ]] || return 1
     [[ -n "$capability" ]] || return 1
     _kaku_set_user_var "$name" "${capability}:${value}"
 }
