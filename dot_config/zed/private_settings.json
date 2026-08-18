@@ -30,6 +30,11 @@
   },
   "proxy": "",
   "context_servers": {
+    "codebase-memory-mcp": {
+      "command": "/Users/yeongshengtan/.local/bin/codebase-memory-mcp",
+      "args": [],
+      "enabled": true,
+    },
     "mcp-server-github": {
       "enabled": true,
       "remote": false,
