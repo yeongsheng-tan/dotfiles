@@ -53,7 +53,7 @@ end
 -- for maximum compatibility, so `wezterm.*` here is expected.
 --
 -- 1) Font family and size
-config.font = wezterm.font('JetBrains Mono')
+config.font = wezterm.font_with_fallback({ 'PaperMono Nerd Font Mono', 'JetBrains Mono' })
 config.font_size = 14.5
 
 config.harfbuzz_features = {

@@ -10,10 +10,13 @@ decorations_theme_variant = "Light" # "Dark"
 
 [font]
 
-normal.family = "JetBrainsMono Nerd Font"
-bold.family = "JetBrainsMono Nerd Font"
-italic.family = "JetBrainsMono Nerd Font"
-bold_italic.family = "JetBrainsMono Nerd Font"
+#normal.family = "JetBrainsMono Nerd Font"
+#bold.family = "JetBrainsMono Nerd Font"
+#italic.family = "JetBrainsMono Nerd Font"
+#bold_italic.family = "JetBrainsMono Nerd Font"
+normal.family = "PaperMono Nerd Font Mono"
+bold.family = "PaperMono Nerd Font Mono"
+# Paper Mono ships no italic faces; Alacritty synthesizes slant from normal
 size = 14.0
 
 [selection]
