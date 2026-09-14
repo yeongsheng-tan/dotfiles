@@ -12,6 +12,7 @@ dive = "latest"
 kubespy = "latest"
 helm = "latest"
 minikube = "latest"
+pnpm = "latest"
 terraform = "latest"
 
 [env]
