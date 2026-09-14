@@ -6,9 +6,26 @@ export KAKU_ZSH_DIR="$HOME/.config/kaku/zsh"
 # Add Kaku managed bin to PATH (kaku wrapper and user tools)
 export PATH="$KAKU_ZSH_DIR/bin:$PATH"
 
-# Initialize Starship only inside Kaku. The managed file is sourced by every
-# zsh so PATH and shared helpers remain available in IDE and system terminals.
-if [[ "${TERM_PROGRAM:-}" == "Kaku" ]] && command -v starship &> /dev/null; then
+# Which shells count as "inside Kaku". TERM_PROGRAM alone is not enough: tmux
+# rewrites it to "tmux", so a tmux session started from Kaku lost the prompt
+# and Smart Tab. KAKU_SESSION is exported in a Kaku shell and inherited by
+# that tmux server. Any other terminal sets its own TERM_PROGRAM, so a value
+# that leaked through (VS Code launched from Kaku) is dropped here (#503).
+if [[ "${TERM_PROGRAM:-}" == "Kaku" ]]; then
+    export KAKU_SESSION=1
+elif [[ -z "${TMUX:-}" ]]; then
+    unset KAKU_SESSION
+fi
+_kaku_in_kaku=0
+if [[ "${TERM_PROGRAM:-}" == "Kaku" ]] || [[ -n "${TMUX:-}" && -n "${KAKU_SESSION:-}" ]]; then
+    _kaku_in_kaku=1
+fi
+
+# Initialize Starship inside Kaku by default. The managed file is sourced by
+# every zsh so PATH and shared helpers remain available in IDE and system
+# terminals. KAKU_PROMPT_EVERYWHERE=1 opts the prompt into all of them, for
+# people who use Kaku's Starship as their one prompt (#503).
+if { (( _kaku_in_kaku )) || [[ -n "${KAKU_PROMPT_EVERYWHERE:-}" ]]; } && command -v starship &> /dev/null; then
     # Cache the full starship init script. Plain `starship init zsh` forks
     # starship on every new shell (twice: the stub it prints re-runs
     # `starship init zsh --print-full-init`), and that fork+exec is the
@@ -505,7 +522,7 @@ unset -f _kaku_has_autosuggest_system 2>/dev/null
 # - Without KAKU_TAB_ACCEPT_SUGGEST_FIRST, prefer completion so Tab reveals
 #   candidates instead of accepting recent-history suggestions
 # - Only claim Tab inside Kaku sessions unless explicitly disabled
-if [[ -z "${KAKU_SMART_TAB_DISABLE:-}" ]] && [[ "${TERM_PROGRAM:-}" == "Kaku" ]]; then
+if [[ -z "${KAKU_SMART_TAB_DISABLE:-}" ]] && (( _kaku_in_kaku )); then
     _kaku_tab_widget() {
         emulate -L zsh
 
@@ -567,6 +584,18 @@ if ! (( ${+functions[_zsh_highlight]} )) && [[ -f "$KAKU_ZSH_DIR/plugins/fast-sy
 
     # Hook into precmd (runs before prompt is displayed)
     precmd_functions+=(fast_syntax_highlighting_defer)
+fi
+
+# Recover the shell after a TUI or SSH session exits without restoring input
+# modes (#551). Run at the next prompt, never on wake while a TUI is still alive.
+_kaku_reset_mouse_tracking() {
+    if [[ "${TERM_PROGRAM:-}" == "Kaku" || ( -n "${TMUX:-}" && -n "${KAKU_SESSION:-}" ) ]]; then
+        printf '\033[?1000;1002;1003;1004;1005;1006;1007;1016l'
+    fi
+    return 0
+}
+if [[ ${precmd_functions[(Ie)_kaku_reset_mouse_tracking]} -eq 0 ]]; then
+    precmd_functions+=(_kaku_reset_mouse_tracking)
 fi
 
 # Kaku AI fix hooks (error-only):
