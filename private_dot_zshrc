@@ -353,3 +353,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+
+# >>> Magnitude CLI PATH >>>
+case "$PATH" in
+  "$HOME/.magnitude/bin"|"$HOME/.magnitude/bin":*) ;;
+  *) export PATH="$HOME/.magnitude/bin:$PATH" ;;
+esac
+# <<< Magnitude CLI PATH <<<
