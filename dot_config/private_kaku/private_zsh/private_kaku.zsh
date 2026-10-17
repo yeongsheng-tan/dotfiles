@@ -587,13 +587,25 @@ if ! (( ${+functions[_zsh_highlight]} )) && [[ -f "$KAKU_ZSH_DIR/plugins/fast-sy
 fi
 
 # Recover the shell after a TUI or SSH session exits without restoring input
-# modes (#551). Run at the next prompt, never on wake while a TUI is still alive.
+# modes (#551) or the cursor (a Claude Code stopped with Ctrl+C leaves it hidden). Run at the next prompt, never on wake while a TUI is still alive.
+# The initial prompt is inside Powerlevel10k's instant-prompt output capture.
+# There is nothing to recover until a command has run (#561).
+_kaku_mouse_tracking_preexec() {
+    _kaku_mouse_tracking_needs_reset=1
+}
 _kaku_reset_mouse_tracking() {
+    if [[ "${_kaku_mouse_tracking_needs_reset:-0}" != "1" ]]; then
+        return 0
+    fi
+    _kaku_mouse_tracking_needs_reset=0
     if [[ "${TERM_PROGRAM:-}" == "Kaku" || ( -n "${TMUX:-}" && -n "${KAKU_SESSION:-}" ) ]]; then
-        printf '\033[?1000;1002;1003;1004;1005;1006;1007;1016l'
+        printf '\033[?1000;1002;1003;1004;1005;1006;1007;1016l\033[?25h'
     fi
     return 0
 }
+if [[ ${preexec_functions[(Ie)_kaku_mouse_tracking_preexec]} -eq 0 ]]; then
+    preexec_functions+=(_kaku_mouse_tracking_preexec)
+fi
 if [[ ${precmd_functions[(Ie)_kaku_reset_mouse_tracking]} -eq 0 ]]; then
     precmd_functions+=(_kaku_reset_mouse_tracking)
 fi
