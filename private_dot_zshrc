@@ -360,3 +360,5 @@ case "$PATH" in
   *) export PATH="$HOME/.magnitude/bin:$PATH" ;;
 esac
 # <<< Magnitude CLI PATH <<<
+
+. "$HOME/.turso/env"
