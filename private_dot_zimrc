@@ -50,7 +50,7 @@ zmodule magic-enter --use degit
 # asdf
 # zmodule asdf --use degit
 # exa
-zmodule exa --use degit
+# zmodule exa --use degit
 # fasd — removed: consolidated on zoxide for directory jumping (see ~/.zshrc)
 # zmodule fasd --use degit
 # fzf
@@ -82,11 +82,11 @@ zmodule romkatv/powerlevel10k --use degit
 # chezmoi
 zmodule joke/zim-chezmoi --use degit
 # zim-helm
-zmodule joke/zim-helm --use degit
+# zmodule joke/zim-helm --use degit
 # zim-istioctl
-zmodule joke/zim-istioctl --use degit
+# zmodule joke/zim-istioctl --use degit
 # zim-k9s
-zmodule joke/zim-k9s --use degit
+# zmodule joke/zim-k9s --use degit
 # zim-kubectl
 #zmodule joke/zim-kubectl --use degit
 # zim-minikube
@@ -94,12 +94,12 @@ zmodule joke/zim-k9s --use degit
 # mise
 zmodule joke/zim-mise --use degit
 # zim-skaffold
-zmodule joke/zim-skaffold --use degit
+# zmodule joke/zim-skaffold --use degit
 # zim-steampipe
 zmodule joke/zim-steampipe --use degit
 # zim-yq
 zmodule joke/zim-yq --use degit
 # zim-zoxide — removed: init moved to end of ~/.zshrc so it loads after
 # all other hooks (fasd/mise/atuin/direnv) and zoxide's doctor stops nagging.
-# zmodule kiesman99/zim-zoxide --use degit
+zmodule kiesman99/zim-zoxide --use degit
 # }}} End configuration added by Zim install
