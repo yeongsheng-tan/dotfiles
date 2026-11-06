@@ -323,11 +323,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 [[ ":$PATH:" != *":$HOME/.config/kaku/zsh/bin:"* ]] && export PATH="$HOME/.config/kaku/zsh/bin:$PATH" # Kaku PATH Integration
 
-# Added by Spectra
-if [[ -z ${path[(r)$HOME/.local/bin]} ]]; then
-  path=("$HOME/.local/bin" $path)
-fi
-
 # Added by Antigravity IDE
 export PATH="/Users/yeongshengtan/.antigravity-ide/antigravity-ide/bin:$PATH"
 
