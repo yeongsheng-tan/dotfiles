@@ -357,3 +357,4 @@ esac
 # <<< Magnitude CLI PATH <<<
 
 . "$HOME/.turso/env"
+source /Users/yeongshengtan/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
