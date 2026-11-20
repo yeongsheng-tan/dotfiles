@@ -246,11 +246,6 @@ export PATH="/Users/yeongshengtan/.codeium/windsurf/bin:$PATH"
 # IntelliJ shell path
 # export PATH="$PATH:~/Applications/IntelliJ\ IDEA\ Community\ Edition\ 2024.3.5.app/Contents/MacOS"
 
-# Nix
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-# End Nix
 
 # bat
 export BAT_THEME="TwoDark"
