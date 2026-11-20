@@ -82,7 +82,7 @@
     "play_sound_when_agent_done": "always",
     "default_model": {
       "provider": "lmstudio",
-      "model": "google/gemma-4-31b-qat",
+      "model": "qwen/qwen3.8-27b",
     },
   },
   "auto_update_extensions": {
